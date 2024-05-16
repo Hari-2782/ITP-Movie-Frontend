@@ -1,0 +1,60 @@
+.footer {
+    position: initial;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #010930;
+    color: #495057;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    border-top: 1px solid #dee2e6;
+    z-index: 9999; /* Ensure it's above other content */
+    height: auto; /* Change height to auto for responsiveness */
+    
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap; /* Allow links to wrap to the next line */
+    justify-content: center; /* Center the links horizontally */
+    margin-top: 20px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none; /* Remove underline decoration */
+    padding: 0 10px;
+}
+
+.footer-subscribe {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-subscribe input[type="text"] {
+    padding: 5px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.footer-subscribe input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-subscribe input[type="text"] {
+        width: 40%; /* Make the input field wider on smaller screens */
+    }
+    .footer{
+        position: initial; 
+        scrollbar-width: 10px;
+        
+    }
+
+}

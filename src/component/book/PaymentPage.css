@@ -1,0 +1,82 @@
+
+
+/* Main container */
+.payment-container {
+  padding-top: 0;
+  margin-top: 140px;
+  background-color: #f7f7f7;
+  padding: 50px;
+  margin: 40px auto; /* Center the container horizontally */
+  width: 500px; /* Adjust the width as needed */
+  border: 1px solid #ddd; /* Optional border for the container */
+  border-radius: 5px; /* Add rounded corners */
+  display: flex;
+  flex-direction: column; /* Arrange content vertically */
+  justify-content: center;
+}
+.loyal{
+  margin-right: 20px;
+
+}
+.package{
+  margin-right: 20px;
+
+}
+.pay{
+  margin-top: 10px;
+}
+
+.coupon{
+  margin-top: 20px;
+}
+
+.payment{
+  margin-top: 15px;
+}
+
+
+
+/* Subtotal and total */
+.subtotal,
+.total {
+  font-weight: bold;
+}
+
+.total {
+  font-size: 18px;
+}
+
+/* Button */
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; 
+}
+
+button:hover {
+  background-color: #0056b3; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-1px); 
+}
+
+/* Footer */
+.footer {
+  background-color: rgb(1, 9, 48);
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+}
+
+/* Navigation (if needed) */
+.nav {
+  background-color: rgb(1, 9, 48);
+}
+
+/* Example footer styling */
+.footer p {
+  margin: 0;
+}

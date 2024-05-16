@@ -1,0 +1,51 @@
+.moviecard {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    justify-content: space-between;
+    align-items: center; /* Center items vertically */
+    left: 50%;
+    right: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.moviecard:hover {
+    transform: translateY(-5px);
+}
+
+.moviecard .movieimg {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+
+.moviecard .details {
+    padding: 15px;
+}
+
+.moviecard .details .title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.moviecard .details .type {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.footer {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}

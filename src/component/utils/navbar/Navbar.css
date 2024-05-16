@@ -1,0 +1,93 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 60px;
+  transition: 0.3s ease-in;
+  /* box-shadow: inset 0px 20px 10px -9px rgba(1, 9, 45, 0.9), inset 0px 20px 42px -4px rgba(1, 9, 45, 0.3); */
+}
+.nav-bg{
+  background-color: rgb(1, 9, 48);
+  color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 60px;
+}
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.nav img {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.searchbox {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 30px;
+  padding: 10px;
+  margin-left: 10px;
+  width: 300px;
+ 
+}
+.searchbtn {
+  margin-right: 5px;
+  font-size: 1.5rem;
+  color: var(--col2);
+}
+
+input[type="text"] {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.right {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.theme_icon1 {
+  font-size: 1.5rem;
+}
+
+
+/* Example media query for responsiveness */
+@media (max-width: 768px) {
+  .nav {
+      padding: 10px;
+  }
+  
+ .searchbox {
+    display: none;
+  } 
+  
+ 
+
+  .right {
+    margin-right: 0px;
+  }
+} 

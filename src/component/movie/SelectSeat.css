@@ -1,0 +1,329 @@
+.selectseatpage .head {
+    background-color: var(--col2);
+    padding: 80px;
+    padding-bottom: 10px;
+   margin-top: 0px;
+}
+
+.selectseatpage {
+    background-color: rgb(228, 228, 228);
+    min-height: 100vh;
+    width: 100%;
+}
+
+.selectseatpage .s1 {
+    background-color: white;
+}
+
+.selectseatpage .head h1 {
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+
+.selectseatpage .head h3 {
+    color: gray;
+    font-size: 13px;
+    font-weight: 600;
+
+    border: 1px solid #808080;
+    padding: 5px 20px;
+    border-radius: 25px;
+    width: fit-content;
+}
+
+.half-circle {
+    width: 500px;
+    height: 70px;
+    background-color: #6361614c;
+    box-shadow: 0 0 2px rgba(12, 12, 12, 0.2); /* Subtle top shadow */
+    box-shadow: 0 10px 20px rgba(12, 12, 12, 0.5);
+    overflow: 'hidden'; 
+    /* bottom: '-35px';  */
+    position: 'relative'; 
+  border-bottom-left-radius: 100px; 
+  border-bottom-right-radius: 100px;
+  border-top:12px;
+ 
+    
+}
+.banner {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .banner h1 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+/* SEATS */
+/* Style for seat type */
+.selectseat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+.selectseat .indicators {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.selectseat .indicators div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.selectseat .indicators div span {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+    padding: 0px;
+    margin: 0px;
+}
+.selectseat .indicators div p {
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    color: gray;
+    padding: 0px;
+    margin: 0px;
+}
+.seat-type {
+    /* border: 1px solid #ccc; */
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #ffffff;
+}
+/* Style for seat type title */
+.seat-type h2 {
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    border: 1px solid #ccc;
+    width: max-content;
+    padding: 5px 20px;
+    border-radius: 25px;
+}
+
+/* Style for seat row */
+.seat-row {
+
+    /* background-color: aqua; */
+    margin: 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    /* display: flex;
+    border: 1px solid #ccc;
+    margin: 0px;
+    align-items: center;
+    gap : 20px;
+    padding: 0px; */
+}
+
+/* Style for row name */
+.seat-row p {
+    width: max-content;
+    font-weight: 500;
+    font-size: 12px;
+    background-color: var(--col1);
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    line-height: 0;
+    padding: 0;
+}
+
+/* Style for seats container */
+.seats {
+    display: flex;
+    padding: 0px;
+}
+
+/* Style for individual seat */
+.seat-available,
+.seat-unavailable,
+.seat-selected {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px #ccc;
+}
+
+
+
+/* Style for unavailable seats */
+.seat-unavailable {
+    color: #313131;
+    background-color: rgb(230, 230, 230);
+}
+
+.seat-selected {
+    color: white;
+    background-color: var(--col1);
+    animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from {
+      box-shadow: 0 0 0 2px var(--col1);
+    }
+    to {
+      box-shadow: 0 0 0 5px var(--col1);
+    }
+  }
+.seat-cols {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+}
+
+.seat-col {
+    display: flex;
+}
+
+.seat-available:hover {
+    cursor: pointer;
+    background-color: var(--col1);
+    color: white;
+}
+
+.seat-unavailable:hover {
+    cursor: not-allowed;
+}
+
+
+
+/* TOTAL */
+
+.selectseat .totalcont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px #ccc;
+    width: 300px;
+}
+
+.selectseat .totalcont .total {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+}
+
+.selectseat .totalcont .total h2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: gray;
+}
+
+.selectseat .totalcont .total h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--col1);
+}
+
+.selectseat .timecont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.selectseat .timecont .time {
+    border: 2px solid #ccc;
+    padding: 5px 20px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.selectseat .timecont .selected{
+    border: 2px solid var(--col1);
+    color: var(--col1);
+}
+
+/* Responsive adjustments for smaller screens */
+ @media screen and (max-width: 480px) {
+    .selectseatpage .head {
+        padding: 70px;
+        padding-bottom: 10px;
+    }
+    .selectseatpage {
+        min-height: 100vh;
+        width: 100%;
+    }
+    .selectseatpage .s1 {
+        background-color: white;
+    }
+    .selectseatpage .head h1 {
+        font-size: 15px;
+    }
+    .selectseatpage .head h3 {
+        font-size: 8px;
+    }
+    
+    .half-circle {
+        width: 300px;
+        height: 20px;
+    }
+    .selectseat .indicators {
+        gap: 8px;
+    }
+    .seat-type {
+        padding:8px;
+        margin:10px;
+        background-color: #f6f3f3;
+    }
+    .seat-row {
+        display: block;
+    }
+    .seat-available,
+    .seat-unavailable,
+    .seat-selected {
+        width: fit-content;
+        height: fit-content;
+        margin-left: 4px;
+        margin-right: 4px;
+        
+    }
+    .seat-cols {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.5px;
+    }
+}

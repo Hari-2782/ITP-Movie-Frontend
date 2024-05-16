@@ -1,0 +1,77 @@
+.profile {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .head {
+    text-align: center;
+    width: 100%;
+    color: var(--col1);
+    font-weight: 400;
+  }
+  
+  .user, .bookings {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: aqua; */
+  }
+  
+  .details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .detail {
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .detail h3 {
+    margin: 0;
+    color: var(--col1);
+    font-weight: 400;
+
+  }
+  
+  .booking {
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    
+  }
+  
+  .booking .detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .booking .detail h3 {
+    margin-right: 10px;
+    color: var(--col1);
+    font-weight: 400;
+        
+  }
+  
+  .booking .detail p {
+    margin: 0;
+  }
+  
+  /* Additional styling based on your specific needs */
+  

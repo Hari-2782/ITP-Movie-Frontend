@@ -1,0 +1,166 @@
+.moviepage {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+.moviepage .c1 {
+    /* min-height: 50vh; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.moviepage .c1 .c11 {
+    background: linear-gradient(90deg, rgb(0, 0, 0) 10%, rgba(255, 255, 255, 0) 50%, rgb(0, 0, 0) 90%);
+    min-height: 50vh;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.moviepage .c1 .c11 .left {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 20px;
+}
+
+.moviepage .c1 .c11 .right {
+    position: relative;
+}
+
+.moviepage .c1 .c11 .left .movie_poster {
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    top: 20px;
+}
+
+.moviepage .c1 .c11 .left .movie_poster p {
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 3px;
+}
+
+.moviepage .c1 .c11 .left .movie_details {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 10px;
+}
+.moviepage .c1 .c11 .left .movie_details .title {
+    font-size: 40px;
+    font-weight: 600;
+
+}
+
+.moviepage .c1 .c11 .left .movie_details .rating {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.moviepage .c1 .c11 .left .movie_details .rating .star {
+    color: yellow;
+}
+.moviepage .c1 .c11 .left .movie_details .halls_languages {
+    display: flex;
+    gap: 10px;
+}
+
+.moviepage .c1 .c11 .left .movie_details .halls_languages p {
+    background-color: rgba(255, 255, 255, 0.866);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.moviepage .c1 .c11 .left .movie_details .duration_type_releasedat {
+    display: flex;
+    gap: 5px;
+}
+
+
+.moviepage .bookbtn {
+    background-color: var(--col1);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 60px;
+    font-size: 16px;
+    width: fit-content;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+
+
+
+.moviepage .sharebtn .shareicon{
+    
+    font-size: 25px;
+    margin-right: 5px;
+}
+.moviepage .sharebtn {
+    background-color: rgb(21, 21, 21);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+
+/* -----------------------------c2---------------------------------- */
+
+.moviepage .c2 {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+}
+
+.moviepage .c2 h1{
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--col2);
+    width: fit-content;
+    padding: 0px 0px;
+    /* border-bottom: 4px solid var(--col1); */
+    /* align-self: center; */
+}
+.moviepage .c2 p{
+    font-size: 18px;
+    font-weight: 400;
+    color: grey;
+}
+
+
+.moviepage .c2 .line{
+    width: 100%;
+    height: 1px;
+    background-color: rgb(233, 233, 233);
+    margin: 30px 0px;
+}

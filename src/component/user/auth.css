@@ -1,0 +1,128 @@
+.authin {
+    display: flex;
+    width: 900px;
+    min-height: 400px;
+    margin: 0px auto;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    margin-top: 100px;
+    border-radius: 10px;
+    overflow: hidden;
+    /* position: ; */
+ margin-bottom: 50px;
+}
+
+
+.authin .left {
+    width: 40%;
+    background-color: #010930;
+  
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authin .right {
+    width: 60%;
+    padding: 20px;
+}
+
+.authin .right form {
+    /* background-color: aqua; */
+    width: 100%;
+}
+
+.authlink {
+    align-self: center;
+    margin: 10px 0px;
+    color: var(--col3);
+}
+
+.authlink a {
+    color: var(--col1);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.img{
+    width: 200px;
+    height: 200px;
+    border-radius: 0%;
+    overflow: hidden;
+}
+
+.forminput_cont {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 10px 0px;
+    gap: 10px;
+    width: 100%;
+    position: relative;
+    /* background-color: #333; */
+}
+
+
+.forminput_cont input {
+   background-color: white;
+   border-bottom: 1px solid var(--col1);    
+    padding: 10px;
+    font-size: 15px;
+    width: auto;
+    border: none;
+    border-bottom: 1px solid var(--col1);
+    /* margin-left: 40px; */
+}
+
+.forminput_cont input:focus {
+    outline: none;
+    border-bottom: 2px solid var(--col2);
+    /* margin-left: 40px; */
+}
+
+
+
+.forminput_cont label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    /* margin-left: 2rem; */
+    margin-top: 0.7rem;
+    display: block;
+    color: var(--col1);
+    width: 100%;
+    /* margin-left: 40px; */
+}
+
+
+
+
+.main_button {
+    background-color: white;
+    /* Green */
+
+    color: var(--col1);
+    font-weight: 600;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid var(--col1);
+    width: fit-content;
+    align-self: center;
+    margin: 10px;
+}
+
+.main_button:hover {
+    border: 1px solid var(--col1);
+    background-color: var(--col1);
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+}
+
+.formerror {
+    color: var(--errorcol);
+}

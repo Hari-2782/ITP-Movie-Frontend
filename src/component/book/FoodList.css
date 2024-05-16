@@ -1,0 +1,76 @@
+/* General Styles */
+.food-list-container {
+  font-family: sans-serif;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-image: url("https://stock.adobe.com/search?k=food%20court"); /* Replace with your desired background image URL */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Food Container (New) */
+.food-container {
+  display: flex; /* Set display to flex for row layout */
+  width: 100%; /* Ensure full width to hold both sections */
+}
+
+/* Food Types Container */
+.food-types-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 70px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Food Type Button */
+.food-type {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Food Items Container */
+.food-items-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0; /* Remove margin-top for seamless flow */
+}
+
+/* Food Item */
+.food-item {
+  flex: 0 0 25%;
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Food Item Image */
+.food-item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+/* Cart Container (Moved Styles) */
+.food-list-container { /* Move styles to main container */
+  position: relative;
+}
+
+.cart-container { /* Apply styles within main container */
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,30 @@
+.celebcard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.celebcard img {
+    width: 80%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 50%; /* Use 50% for a perfect circle */
+}
+
+
+
+.celebcard h3{
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+}
+
+.celebcard h4{
+    font-size: 13px;
+    color: gray;
+    font-weight: 400;
+ 
+ }
