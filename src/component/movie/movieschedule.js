@@ -1,6 +1,7 @@
 import moment from 'moment';
 import React from 'react';
-import DatePicker from 'react-horizontal-datepicker';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import './BuyTicketsPage.css';
 import MovieChatbot from './chat';
@@ -83,13 +84,10 @@ const BuyTicketsPage = () => {
                             <h3>{movie.genre.join(',')}</h3>
                         </div>
                         <DatePicker
-                            getSelectedDay={(date) => {
-                                setSelectedDate(date);
-                            }}
-                            endDate={80}
-                            selectDate={selectedDate}
-                            labelFormat={'MMMM'}
-                            color={'rgb(1, 9, 48)'}
+                            selected={selectedDate}
+                            onChange={(date) => setSelectedDate(date)}
+                            dateFormat="MMMM d, yyyy"
+                            inline
                         />
                         <div className='time'>
                             <h2>Show Times:</h2>
