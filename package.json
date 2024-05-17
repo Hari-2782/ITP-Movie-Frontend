@@ -3,23 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "bootstrap": "^5.3.3",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.2",
     "moment": "^2.30.1",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
+    "react-dom": "^18.2.0",
+    "react-horizontal-datepicker": "^2.0.3",
+    "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.3",
+    "react-scripts": "5.0.1",
+    "react-simple-chatbot": "^0.6.1",
     "react-toastify": "^10.0.5",
     "swiper": "^11.1.0",
     "validator": "^13.11.0",
-    "jspdf": "^2.5.1",
-    "jspdf-autotable": "^3.8.2",
-    "react-icons": "^5.0.1",
-    "react-simple-chatbot": "^0.6.1"
-  }
-,  
-  
+    "web-vitals": "^2.1.4",
+    "styled-components": "^5.3.10"  
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
