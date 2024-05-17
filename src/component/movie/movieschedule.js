@@ -3,7 +3,7 @@ import React from 'react';
 import DatePicker from 'react-horizontal-datepicker';
 import { useNavigate, useParams } from 'react-router-dom';
 import './BuyTicketsPage.css';
-import SimpleForm from './chat';
+import MovieChatbot from './chat';
 
 const BuyTicketsPage = () => {
     const navigate = useNavigate();
@@ -137,8 +137,8 @@ const BuyTicketsPage = () => {
                     )}
                 </div>
             )}
-           <SimpleForm  />
-           {/* movieid={movieid} screenid={screenid} */}
+           <MovieChatbot movieid={movieid} />
+           
         </div>
     );
 };

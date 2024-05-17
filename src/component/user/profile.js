@@ -4,6 +4,7 @@ import './ProfilePage.css';
 const ProfilePage = () => {
     const [bookings, setBookings] = useState([]);
     const [user, setUser] = useState(null);
+    const [offerTypes, setOfferTypes] = useState([]);
 
     useEffect(() => {
         const getBookings = async () => {
@@ -38,11 +39,35 @@ const ProfilePage = () => {
                 const data = await response.json();
                 if (data.ok) {
                     setUser(data.data);
+                    fetchOfferTypes(data.data.offer);
                 } else {
                     console.log('Error fetching user data:', data);
                 }
             } catch (error) {
                 console.error('Error fetching user data:', error);
+            }
+        };
+
+        const fetchOfferTypes = async (offerIds) => {
+            try {
+                const types = await Promise.all(offerIds.map(async (offerId) => {
+                    const response = await fetch(`http://localhost:8000/offer/get/${offerId}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        credentials: 'include'
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        return data.data.type; // Ensure the correct path to the type
+                    }
+                    return null;
+                }));
+                setOfferTypes(types.filter(type => (type !== null && (type === "package" || type === "premium"))));
+
+            } catch (error) {
+                console.error('Error fetching offer types:', error);
             }
         };
 
@@ -67,6 +92,16 @@ const ProfilePage = () => {
                     <div className='detail'>
                         <h3>Loyalty Points</h3>
                         <p>{user?.loyaltyPoints}</p>
+                    </div>
+                    <div className='detail'>
+                        <h3>Purchase Package</h3>
+                        {offerTypes.length > 0 ? (
+                            offerTypes.map((type, index) => (
+                                <p key={index}>{type}</p>
+                            ))
+                        ) : (
+                            <p>No offers available</p>
+                        )}
                     </div>
                 </div>
             </div>
