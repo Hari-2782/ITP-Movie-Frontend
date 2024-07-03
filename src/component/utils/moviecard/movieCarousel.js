@@ -31,7 +31,7 @@ const MovieCarousel = () => {
     // }
 
     const getMovies = async () => {
-        fetch(`https://itp-movie-backend-me632rlg9-haris-projects-18861f06.vercel.app/movie/getall`, {
+        fetch(`https://itp-movie-backend.vercel.app/movie/getall`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
