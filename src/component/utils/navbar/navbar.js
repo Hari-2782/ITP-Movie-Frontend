@@ -10,7 +10,7 @@ const Navbar = () => {
     const [user, setUser] = React.useState(null)
     
     const handleLogout = () => {
-        fetch('http://localhost:8000/user/logout', {
+        fetch('https://itp-movie-backend-me632rlg9-haris-projects-18861f06.vercel.app/user/logout', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const Navbar = () => {
     };
     const getuser = async () => {
 
-        fetch('http://localhost:8000/user/getuser', {
+        fetch('https://itp-movie-backend-me632rlg9-haris-projects-18861f06.vercel.app/user/getuser', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ window.addEventListener('scroll',changecolor)
 
     const checkLogin = async () => {
     
-        fetch('http://localhost:8000/user/checklogin', {
+        fetch('https://itp-movie-backend-me632rlg9-haris-projects-18861f06.vercel.app/user/checklogin', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
