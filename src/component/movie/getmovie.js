@@ -19,7 +19,7 @@ const MoviePage = () => {
     useEffect(() => {
         const getMovie = async () => {
             try {
-                const res = await fetch(`http://localhost:8000/movie/get/${movieId}`, {
+                const res = await fetch(`https://itp-movie-backend.vercel.app/movie/get/${movieId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

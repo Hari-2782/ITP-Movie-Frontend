@@ -28,7 +28,7 @@ const FeedbackList = ({ userId, onDelete, onUpdate, onPost }) => {
 
     const getFeedback = async () => {
         try {
-            const response = await fetch("http://localhost:8000/feedback");
+            const response = await fetch("https://itp-movie-backend.vercel.app/feedback");
             const data = await response.json();
             setFeedbacks(data);
         } catch (error) {
@@ -52,7 +52,7 @@ const FeedbackList = ({ userId, onDelete, onUpdate, onPost }) => {
     const handleDelete = async (id, feedback) => {
         if (feedback.userId === User._id) {
             try {
-                await fetch(`http://localhost:8000/feedback/${id}`, {
+                await fetch(`https://itp-movie-backend.vercel.app/feedback/${id}`, {
                     method: 'DELETE'
                 });
                 setFeedbacks(feedbacks.filter((feedback) => feedback._id !== id));
@@ -67,7 +67,7 @@ const FeedbackList = ({ userId, onDelete, onUpdate, onPost }) => {
 
     const handleUpdate = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/feedback/${selectedFeedback._id}`, {
+            const response = await fetch(`https://itp-movie-backend.vercel.app/feedback/${selectedFeedback._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -89,7 +89,7 @@ const FeedbackList = ({ userId, onDelete, onUpdate, onPost }) => {
 
     const handlePost = async () => {
         try {
-            const response = await fetch('http://localhost:8000/feedback', {
+            const response = await fetch('https://itp-movie-backend.vercel.app/feedback', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -119,7 +119,7 @@ const FeedbackList = ({ userId, onDelete, onUpdate, onPost }) => {
     
     const getUserData = async () => {
         try {
-            const response = await fetch("http://localhost:8000/user/getuser", {
+            const response = await fetch("https://itp-movie-backend.vercel.app/user/getuser", {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

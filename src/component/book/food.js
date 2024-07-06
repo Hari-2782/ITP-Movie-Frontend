@@ -13,7 +13,7 @@ const FoodList = () => {
   useEffect(() => {
     const fetchFoodTypes = async () => {
       try {
-        const response = await fetch("http://localhost:8000/food/getall");
+        const response = await fetch("https://itp-movie-backend.vercel.app/food/getall");
         if (!response.ok) {
           throw new Error("Failed to fetch food types");
         }
@@ -29,7 +29,7 @@ const FoodList = () => {
 
   const handleTypeClick = async (type) => {
     try {
-      const response = await fetch(`http://localhost:8000/food/getitems/${type.toLowerCase().replace(/\s/g, "")}`);
+      const response = await fetch(`https://itp-movie-backend.vercel.app/food/getitems/${type.toLowerCase().replace(/\s/g, "")}`);
       if (!response.ok) {
         throw new Error("Failed to fetch food items");
       }
@@ -69,7 +69,7 @@ const FoodList = () => {
         totalprice: item.price * item.qty, // Correctly calculate the total price
     }));
     
-        const response = await fetch('http://localhost:8000/food/order', {
+        const response = await fetch('https://itp-movie-backend.vercel.app/food/order', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

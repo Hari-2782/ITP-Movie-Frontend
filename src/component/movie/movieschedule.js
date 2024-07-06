@@ -14,7 +14,7 @@ const BuyTicketsPage = () => {
     const { movieid } = useParams();
 
     const getMovie = async () => {
-        fetch(`http://localhost:8000/movie/get/${movieid}`, {
+        fetch(`https://itp-movie-backend.vercel.app/movie/get/${movieid}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const BuyTicketsPage = () => {
     const getTheatres = async () => {
         if (selectedTime) {
             try {
-                const res = await fetch(`http://localhost:8000/screen/schedule/${selectedDate}/${selectedTime}/${movieid}`, {
+                const res = await fetch(`https://itp-movie-backend.vercel.app/screen/schedule/${selectedDate}/${selectedTime}/${movieid}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

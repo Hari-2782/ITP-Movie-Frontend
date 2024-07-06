@@ -37,7 +37,7 @@ export default function Signup() {
             return;
         }
 
-        fetch('http://localhost:8000/user/register', {
+        fetch('https://itp-movie-backend.vercel.app/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

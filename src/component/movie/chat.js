@@ -12,7 +12,7 @@ class MovieChatbot extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:8000/movie/get/${this.props.movieid}`, {
+    fetch(`https://itp-movie-backend.vercel.app/movie/get/${this.props.movieid}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

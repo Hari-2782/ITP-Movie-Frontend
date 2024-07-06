@@ -9,7 +9,7 @@ const PaymentSlipForm = () => {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const res = await fetch('http://localhost:8000/user/getuser', {
+                const res = await fetch('https://itp-movie-backend.vercel.app/user/getuser', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const PaymentSlipForm = () => {
         formData.append("file", e.target.files[0]);
 
         try {
-            const res = await fetch('http://localhost:8000/slip/upload', {
+            const res = await fetch('https://itp-movie-backend.vercel.app/slip/upload', {
                 method: 'POST',
                 body: formData,
                 'Content-Type': 'multipart/form-data'
@@ -63,7 +63,7 @@ const PaymentSlipForm = () => {
         };
     
         try {
-            const response = await fetch('http://localhost:8000/slip/slips', {
+            const response = await fetch('https://itp-movie-backend.vercel.app/slip/slips', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

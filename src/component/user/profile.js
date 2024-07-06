@@ -9,7 +9,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const getBookings = async () => {
             try {
-                const response = await fetch("http://localhost:8000/booking/userboooking", {
+                const response = await fetch("https://itp-movie-backend.vercel.app/booking/userboooking", {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const ProfilePage = () => {
 
         const getUserData = async () => {
             try {
-                const response = await fetch("http://localhost:8000/user/getuser", {
+                const response = await fetch("https://itp-movie-backend.vercel.app/user/getuser", {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const ProfilePage = () => {
         const fetchOfferTypes = async (offerIds) => {
             try {
                 const types = await Promise.all(offerIds.map(async (offerId) => {
-                    const response = await fetch(`http://localhost:8000/offer/get/${offerId}`, {
+                    const response = await fetch(`https://itp-movie-backend.vercel.app/offer/get/${offerId}`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json',

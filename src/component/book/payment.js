@@ -16,7 +16,7 @@ const PaymentPage = () => {
     const [couponError, setCouponError] = useState('');
     const [offerc, setOfferc] = useState(null);
     const getUser = async () => {
-        fetch('http://localhost:8000/user/getuser', {
+        fetch('https://itp-movie-backend.vercel.app/user/getuser', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const PaymentPage = () => {
 
     const getBooking = async () => {
         if (bookingId) {
-            fetch(`http://localhost:8000/booking/getbooking/${bookingId}`)
+            fetch(`https://itp-movie-backend.vercel.app/booking/getbooking/${bookingId}`)
                 .then(response => response.json())
                 .then(data => setBooking(data))
                 .catch(error => console.error('Error fetching booking:', error));
@@ -43,7 +43,7 @@ const PaymentPage = () => {
 
     const getFood = async () => {
         if (foodId) {
-            fetch(`http://localhost:8000/food/get/${foodId}`)
+            fetch(`https://itp-movie-backend.vercel.app/food/get/${foodId}`)
                 .then(response => response.json())
                 .then(data => setFood(data))
                 .catch(error => console.error('Error fetching food:', error));
@@ -52,7 +52,7 @@ const PaymentPage = () => {
 
     const getOffer = async () => {
         if (offerId) {
-            fetch(`http://localhost:8000/offer/get/${offerId}`)
+            fetch(`https://itp-movie-backend.vercel.app/offer/get/${offerId}`)
                 .then(res => res.json())
                 .then((response) => {
                     setOffer(response.data);
@@ -78,7 +78,7 @@ const PaymentPage = () => {
         return 0;
     };
     const handlePackage = () => {
-        fetch(`http://localhost:8000/offer/active/${offerId}`, {
+        fetch(`https://itp-movie-backend.vercel.app/offer/active/${offerId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ const PaymentPage = () => {
             total = total - total * (offerc.discount/100);
             
         }
-        fetch('http://localhost:8000/payment/create', {
+        fetch('https://itp-movie-backend.vercel.app/payment/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -125,7 +125,7 @@ const PaymentPage = () => {
             .then(res => res.json())
             .then(response => {
                 if (response.success) {
-                    fetch(`http://localhost:8000/food/update/${foodId}`, {
+                    fetch(`https://itp-movie-backend.vercel.app/food/update/${foodId}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -153,7 +153,7 @@ const PaymentPage = () => {
 
     const validateCoupon = async () => {
         try{
-        const res=await fetch(`http://localhost:8000/offer/op`, {
+        const res=await fetch(`https://itp-movie-backend.vercel.app/offer/op`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

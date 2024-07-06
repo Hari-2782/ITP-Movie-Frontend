@@ -18,7 +18,7 @@ const SelectSeatPage = () => {
     const [isLoggedIn, setIsLoggedIn] = React.useState(false)
     const getschedules = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/screen/schedulebymovie/${screenid}/${date}/${movieid}`, {
+            const response = await fetch(`https://itp-movie-backend.vercel.app/screen/schedulebymovie/${screenid}/${date}/${movieid}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const SelectSeatPage = () => {
     const [movie, setMovie] = React.useState(null)
 
     const getMovie = async () => {
-        fetch(`http://localhost:8000/movie/get/${movieid}`, {
+        fetch(`https://itp-movie-backend.vercel.app/movie/get/${movieid}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const SelectSeatPage = () => {
     }
     const checkLogin = async () => {
         try {
-            const res = await fetch('http://localhost:8000/user/checklogin', {
+            const res = await fetch('https://itp-movie-backend.vercel.app/user/checklogin', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -208,7 +208,7 @@ const SelectSeatPage = () => {
         } 
         else{
         if (isLoggedIn) {
-            fetch(`http://localhost:8000/booking/create`, {
+            fetch(`https://itp-movie-backend.vercel.app/booking/create`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

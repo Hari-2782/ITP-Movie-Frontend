@@ -21,7 +21,7 @@ const Login = () => {
     const handleRequestOTP = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`https://itp-movie-backend-me632rlg9-haris-projects-18861f06.vercel.app/user/sendOTP`, {
+            const response = await fetch(`https://itp-movie-backend.vercel.app/user/sendOTP`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ const Login = () => {
         // }
 
         try {
-            const response = await fetch(`http://localhost:8000/user/login`, {
+            const response = await fetch(`https://itp-movie-backend.vercel.app/user/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

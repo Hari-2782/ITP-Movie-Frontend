@@ -11,7 +11,7 @@ const OfferPage = () => {
     const [offers, setOffer] = useState([]);
 
     const getoffer = async () => {
-        fetch(`http://localhost:8000/offer/getall`, {
+        fetch(`https://itp-movie-backend.vercel.app/offer/getall`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
