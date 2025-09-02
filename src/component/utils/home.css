@@ -1,23 +1,136 @@
-.my{
-    left:0;
-    top:0;
-    margin-bottom:0;
+body {
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
 }
-@media (max-width: 768px) {
-    .my{
-        margin-top: 60px;
-        margin-bottom:0;
-        padding: 0;
-        margin-left: 0px;
-        left:0;
-           }
+
+.App {
+  overflow-x: hidden;
 }
-@media (max-height: 768px) {
-    .my{
-        margin-top: 60px;
-        margin-bottom:0;
-        padding: 0;
-        margin-left: 0px;
-        left:0;
-           }
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 80vh; /* taller for better clarity */
+  display: flex;
+  align-items: flex-end;
+  padding: 50px;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.hero-img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  transform: translateX(-50%);
+  object-fit: contain; /* avoids cropping */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: -1;
+}
+
+.hero-img.active {
+  opacity: 1;
+}
+
+.hero-content {
+  z-index: 1;
+  max-width: 60%;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #e50914; /* red */
+}
+
+.hero-content p {
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.hero-buttons button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 3px;
+  transition: background 0.3s;
+}
+
+.hero-buttons .play {
+  background-color: #e50914;
+  color: #fff;
+}
+
+.hero-buttons .info {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.hero-buttons button:hover {
+  opacity: 0.8;
+}
+
+.hero-fade {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  background-image: linear-gradient(180deg, transparent, #000);
+}
+
+/* Movie Rows */
+.movie-row {
+  margin-top: 20px;
+  padding: 0 30px;
+}
+
+.movie-row h2 {
+  margin-bottom: 10px;
+  color: #e50914;
+}
+
+.movie-row-cards {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+}
+
+.movie-row-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-card {
+  min-width: 200px;
+  margin-right: 10px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.3s;
+}
+
+.movie-card:hover {
+  transform: scale(1.1);
+}
+
+.movie-card p {
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
 }

@@ -1,60 +1,96 @@
-.footer {
-    position: initial;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #010930;
-    color: #495057;
+.footer-modern {
+    background-color: #0b0b0b;
+    color: #fff;
+    padding: 40px 60px;
     text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-    border-top: 1px solid #dee2e6;
-    z-index: 9999; /* Ensure it's above other content */
-    height: auto; /* Change height to auto for responsiveness */
-    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Links */
 .footer-links {
     display: flex;
-    flex-wrap: wrap; /* Allow links to wrap to the next line */
-    justify-content: center; /* Center the links horizontally */
-    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 25px;
 }
 
 .footer-links a {
-    color: white;
-    text-decoration: none; /* Remove underline decoration */
-    padding: 0 10px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.3s ease;
 }
 
+.footer-links a:hover {
+    color: #ff0000;
+}
+
+/* Newsletter */
 .footer-subscribe {
-    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.footer-subscribe p {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.subscribe-box {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.footer-subscribe input[type="text"] {
-    padding: 5px;
-    margin-left: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.footer-subscribe input[type="text"]:focus {
+.subscribe-box input {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
     outline: none;
-    border-color: #007bff;
+    width: 250px;
+    max-width: 100%;
+    font-size: 14px;
+}
+
+.subscribe-box button {
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 2px solid #ff0000;
+    background: transparent;
+    color: #ff0000;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.subscribe-box button:hover {
+    background: #ff0000;
+    color: #000;
+}
+
+/* Copyright */
+.footer-copy p {
+    font-size: 12px;
+    color: #aaa;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .footer-subscribe input[type="text"] {
-        width: 40%; /* Make the input field wider on smaller screens */
-    }
-    .footer{
-        position: initial; 
-        scrollbar-width: 10px;
-        
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
     }
 
+    .subscribe-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .subscribe-box input {
+        width: 200px;
+    }
 }
