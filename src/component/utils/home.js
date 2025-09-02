@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import MovieCarousel from "./moviecard/movieCarousel";
+import UpcomingCarousel from "./moviecard/upComingCarousel";
 
 // Updated anime + Hollywood movie data with high-quality images
 const nowPlayingMovies = [
@@ -279,8 +281,32 @@ const App = () => {
 
       {/* Now Showing + Coming Soon */}
       <main style={{ padding: "0 40px" }}>
-        <Carousel title="Now Showing" movies={nowPlayingMovies} />
-        <Carousel title="Coming Soon" movies={upcomingMovies} />
+        <div style={{ padding: "40px 0" }}>
+          <h2
+            style={{
+              fontSize: "28px",
+              fontWeight: "bold",
+              color: "#dc2626",
+              marginBottom: "24px",
+            }}
+          >
+            Now Showing
+          </h2>
+          <MovieCarousel />
+        </div>
+        <div style={{ padding: "40px 0" }}>
+          <h2
+            style={{
+              fontSize: "28px",
+              fontWeight: "bold",
+              color: "#dc2626",
+              marginBottom: "24px",
+            }}
+          >
+            Coming Soon
+          </h2>
+          <UpcomingCarousel />
+        </div>
       </main>
 
       {/* Footer */}

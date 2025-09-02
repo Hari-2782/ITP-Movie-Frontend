@@ -84,11 +84,10 @@ const MovieCarousel = () => {
                     modules={[Pagination]}
                     className="mySwiper"
                 >
-                    {movies.map((Movie) => (
-                        <SwiperSlide key={Movie._id} >
+                    {movies.map((movie) => (
+                        <SwiperSlide key={movie._id} >
                             <MovieCard
-                                Movie={Movie}
-                                
+                                movie={movie}
                             />
                         </SwiperSlide>
                     ))}

@@ -1,82 +1,75 @@
-.moviecard {
-    border-radius: 20px;
+.movie-card {
+    position: relative;
+    min-width: 180px;
+    max-width: 200px;
+    border-radius: 10px;
     overflow: hidden;
-    border: 1px solid var(--col2);
-    box-shadow: 0px 0px 10px 5px #f4f4f4;
-    height: 100%;
-    width: 100%;
-    margin-top: px;
-    margin-left: 0px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    position: relative;
     cursor: pointer;
-}
-
-
-.moviecard .movieimg {
-    object-fit: contain;
-    background-size: cover;
-    background-position: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.1);
+    z-index: 5;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+  }
+  
+  .movie-poster {
     width: 100%;
-    height: 400px;
-    position: relative;
-}
-.moviecard .movieimg .rating {
-    background-color: rgb(0, 0, 0,0.8) ;
+    height: 270px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+  }
+  
+  .movie-overlay {
     position: absolute;
     bottom: 0;
-    /* margin-bottom: 0; */
     width: 100%;
-    color: rgb(255, 255, 255);
-    padding: 5px;
-}
-
-.moviecard .movieimg .rating .star{
-    color: var(--col1);
-}
-
-
-.moviecard .details{
-    padding: 5px 10px;
-}
-
-.moviecard .details .title{
-    font-size: 16px;
-    font-weight: 600;
-}
-
-
-.moviecard .details .type{
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: #fff;
+  }
+  
+  .movie-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  
+  .movie-genre {
     font-size: 12px;
-    font-weight: 600;
-    color: grey;
-}
-.swiper-slide {
-    left: -105px;
-    top: -180px;
-    margin-bottom: -100px;
-    right:0;
-    }
-    @media (max-width:490px) {
-        .swiper-slide {
-            top: -200px;
-            padding: 110px ;
-            padding-bottom: 0;
-            margin-bottom: -30px;
-            margin-left: -210px;
-         
-            }
-            
-          
-      
-    }
-
-    .rating-label {
-        color: yellow;
-    }
-    
-
-      
-    
+    color: #bbb;
+    margin-bottom: 6px;
+  }
+  
+  .movie-rating {
+    font-size: 13px;
+    font-weight: bold;
+    color: #f5c518;
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  
+  .star {
+    margin-right: 5px;
+  }
+  
+  .book-btn {
+    width: 100%;
+    padding: 6px;
+    background: #e50914;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .book-btn:hover {
+    background: #f6121d;
+  }
+  
