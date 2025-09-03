@@ -38,7 +38,7 @@ const MoviesPage = () => {
   };
 
   return (
-    <div style={{ padding: "30px 40px", paddingTop: "110px", minHeight: "100vh", boxSizing: "border-box" }}>
+    <div className="moviesPage" style={{ padding: "30px 40px", paddingTop: "110px", minHeight: "100vh", boxSizing: "border-box" }}>
       <h2
         style={{ margin: "10px 0 20px", color: "#e50914" }}
       >
@@ -61,6 +61,7 @@ const MoviesPage = () => {
 
       {!loading && !error && movies.length > 0 && (
         <div
+          className="moviesGrid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
@@ -136,6 +137,14 @@ const MoviesPage = () => {
           ))}
         </div>
       )}
+      <style>{`
+        @media (max-width: 768px) {
+          .moviesPage { padding: 20px 16px; padding-top: 90px; }
+          .moviesPage h2 { margin: 6px 0 14px; font-size: 20px; }
+          .moviesGrid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important; gap: 12px !important; }
+          .moviesGrid img { height: auto; }
+        }
+      `}</style>
     </div>
   );
 };

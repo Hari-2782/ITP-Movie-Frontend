@@ -205,16 +205,19 @@ const App = () => {
 
   return (
     <div
+      className="homeRoot"
       style={{
         background: "#0f172a",
         color: "white",
         minHeight: "100vh",
         fontFamily: "Arial, sans-serif",
+        overflowX: "hidden",
       }}
     >
       {/* Hero */}
       <section
-        style={{ position: "relative", height: "90vh", overflow: "hidden" }}
+        className="homeHero"
+        style={{ position: "relative", height: "90vh", overflow: "hidden", width: "100vw" }}
       >
         {banners.map((b, i) => (
           <img
@@ -243,6 +246,7 @@ const App = () => {
           }}
         >
           <h1
+            className="homeHeroTitle"
             style={{
               fontSize: "40px",
               fontWeight: "bold",
@@ -255,6 +259,7 @@ const App = () => {
           </h1>
         </div>
         <div
+          className="homeHeroCta"
           style={{
             position: "absolute",
             bottom: "40px",
@@ -280,7 +285,7 @@ const App = () => {
       </section>
 
       {/* Now Showing + Coming Soon */}
-      <main style={{ padding: "0 40px" }}>
+      <main className="homeMain" style={{ padding: "0 40px" }}>
         <div style={{ padding: "40px 0" }}>
           <h2
             style={{
@@ -321,6 +326,18 @@ const App = () => {
       >
         <p>© {new Date().getFullYear()} CineMagic. All rights reserved.</p>
       </footer>
+      <style>{`
+        @media (max-width: 768px) {
+          .homeHero { height: 60vh !important; }
+          .homeHeroTitle { font-size: 22px !important; padding: 0 12px; }
+          .homeHeroCta button { padding: 10px 20px !important; font-size: 14px !important; }
+          .homeMain { padding: 0 16px !important; }
+          /* Narrower cards in carousels */
+          .homeMain [style*='overflow-x: auto'] > div { width: 140px !important; }
+          /* Hide scroll arrows on mobile */
+          .homeMain button { display: none !important; }
+        }
+      `}</style>
     </div>
   );
 };

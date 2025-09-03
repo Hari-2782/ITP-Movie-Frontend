@@ -1,0 +1,107 @@
+/* Movie Page Styles */
+.moviePage {
+  background-color: #141414;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  padding: 40px;
+  padding-top: 100px; /* avoid overlap with fixed header */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.85) 45%, rgba(20,20,20,0.6) 100%);
+  z-index: 1;
+}
+.heroGrid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.posterWrap { width: 240px; }
+.posterImg { width: 240px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.6); }
+.title { font-size: 36px; font-weight: 800; margin: 0; }
+.subline { color: #d1d1d1; margin-top: 6px; font-size: 14px; }
+.metaRow { display: flex; align-items: center; gap: 24px; margin-top: 18px; }
+
+.bookBtn {
+  padding: 10px 16px;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.shareBtn {
+  padding: 10px 12px;
+  background-color: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.sectionHeading { margin: 0 0 6px 0; }
+.overviewText { color: #e0e0e0; line-height: 1.6; margin: 0; }
+
+.crewGrid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 700px;
+}
+
+/* Sections */
+.rowSection { padding: 30px 40px; }
+.rowTitle { margin-bottom: 12px; }
+
+.castGrid { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; }
+.castScroller { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.castItem { scroll-snap-align: start; flex: 0 0 auto; }
+.rightPanel { background: #0f0f0f; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 16px; }
+
+.divider { height: 1px; background: rgba(255,255,255,0.12); border-radius: 1px; margin: 14px 0 10px 0; }
+.linkText { color: #e5e5e5; font-weight: 600; cursor: pointer; }
+
+.crewSection { padding: 0 40px 30px 40px; }
+.recommendSection { padding: 30px 40px 60px 40px; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero { padding: 16px; padding-top: 90px; }
+  .heroGrid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .posterWrap { width: 70% !important; max-width: 260px; margin: 0 auto; }
+  .posterImg { width: 100% !important; height: auto !important; }
+  .title { font-size: 24px; }
+  .metaRow { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+  .castGrid { grid-template-columns: 1fr !important; }
+  .rightPanel { margin-top: 12px; }
+  .details { flex-direction: row; align-items: center; }
+}
+
+.details{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+}

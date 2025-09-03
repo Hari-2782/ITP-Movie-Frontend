@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BiSearch, BiUserCircle } from "react-icons/bi";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -89,7 +91,44 @@ const Navbar = () => {
             </button>
           )}
         </div>
+
+        {/* Mobile Toggle */}
+        <button
+          className="mobile-toggle"
+          aria-label="Toggle navigation"
+          onClick={() => setMobileOpen((v) => !v)}
+        >
+          <GiHamburgerMenu />
+        </button>
       </nav>
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className="mobile-menu" onClick={() => setMobileOpen(false)}>
+          <div className="mobile-menu-panel" onClick={(e) => e.stopPropagation()}>
+            <Link to="/" className="mobile-link" onClick={() => setMobileOpen(false)}>
+              Home
+            </Link>
+            <Link to="/movie" className="mobile-link" onClick={() => setMobileOpen(false)}>
+              Movies
+            </Link>
+            <Link to="/offer" className="mobile-link" onClick={() => setMobileOpen(false)}>
+              Offers
+            </Link>
+            <div className="mobile-divider" />
+            {isLoggedIn ? (
+              <>
+                <Link to="/profile" className="mobile-link" onClick={() => setMobileOpen(false)}>
+                  Profile
+                </Link>
+                <button className="mobile-btn" onClick={handleLogout}>Logout</button>
+              </>
+            ) : (
+              <button className="mobile-btn" onClick={() => (window.location.href = "/login")}>Login</button>
+            )}
+          </div>
+        </div>
+      )}
     </header>
   );
 };
