@@ -17,7 +17,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6); /* Dark overlay for readability */
+    background: rgba(0,0,0,0.4); /* overlay for readability */
     z-index: 1;
 }
 
@@ -25,13 +25,13 @@
 .auth-box {
     position: relative;
     z-index: 2;
-    background: rgba(28, 28, 28, 0.9);
+    background: var(--card);
     padding: 40px 30px;
     border-radius: 12px;
     width: 100%;
     max-width: 400px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-    color: #fff;
+    color: var(--text);
 }
 
 /* Title */
@@ -40,7 +40,7 @@
     margin-bottom: 25px;
     font-size: 24px;
     font-weight: 700;
-    color: #ff0000;
+    color: var(--accent);
 }
 
 /* Form */
@@ -63,11 +63,11 @@
 .form-group input {
     padding: 10px 12px;
     border-radius: 8px;
-    border: none;
+    border: 1px solid rgba(0,0,0,0.12);
     outline: none;
     font-size: 14px;
-    background: #1c1c1c;
-    color: #fff;
+    background: var(--bg-elev);
+    color: var(--text);
 }
 
 .form-error {
@@ -80,9 +80,9 @@
 .btn-main {
     padding: 10px 20px;
     border-radius: 8px;
-    border: 2px solid #ff0000;
+    border: 2px solid var(--accent);
     background: transparent;
-    color: #ff0000;
+    color: var(--accent);
     cursor: pointer;
     font-weight: 500;
     font-size: 14px;
@@ -90,8 +90,8 @@
 }
 
 .btn-main:hover {
-    background: #ff0000;
-    color: #000;
+    background: var(--accent);
+    color: #fff;
 }
 
 /* Auth Link */
@@ -102,14 +102,14 @@
 }
 
 .auth-link a {
-    color: #ff0000;
+    color: var(--accent);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .auth-link a:hover {
-    color: #fff;
+    color: var(--text);
 }
 
 /* Responsive */

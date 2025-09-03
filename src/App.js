@@ -22,14 +22,31 @@ import PaymentSlipForm from "./component/book/slip";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
+  const [theme, setTheme] = React.useState(() => {
+    try {
+      return localStorage.getItem("app-theme") || "dark";
+    } catch {
+      return "dark";
+    }
+  });
+
+  React.useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove("theme-dark", "theme-light");
+    root.classList.add(theme === "light" ? "theme-light" : "theme-dark");
+    try { localStorage.setItem("app-theme", theme); } catch {}
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === "light" ? "dark" : "light"));
+
   return (
     <div className="app">
       <ToastContainer
         bodyStyle={{ fontFamily: "Roboto", fontStyle: "oblique" }}
-        theme="colored"
+        theme={theme === "light" ? "light" : "colored"}
       />
       <Router>
-        <Navbar />
+        <Navbar onToggleTheme={toggleTheme} currentTheme={theme} />
         <Routes>
           <Route path="/" element={<HomeSlider />} />
           <Route path="/movie" element={<MoviesPage />} />

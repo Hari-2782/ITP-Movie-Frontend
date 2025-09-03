@@ -1,6 +1,6 @@
 .footer-modern {
-    background-color: #0b0b0b;
-    color: #fff;
+    background-color: var(--bg);
+    color: var(--text);
     padding: 40px 60px;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,7 +16,7 @@
 }
 
 .footer-links a {
-    color: #fff;
+    color: var(--text);
     text-decoration: none;
     font-weight: 500;
     font-size: 14px;
@@ -24,7 +24,7 @@
 }
 
 .footer-links a:hover {
-    color: #ff0000;
+    color: var(--accent);
 }
 
 /* Newsletter */
@@ -48,19 +48,21 @@
 .subscribe-box input {
     padding: 8px 15px;
     border-radius: 8px;
-    border: none;
+    border: 1px solid rgba(0,0,0,0.12);
     outline: none;
     width: 250px;
     max-width: 100%;
     font-size: 14px;
+    background: var(--bg-elev);
+    color: var(--text);
 }
 
 .subscribe-box button {
     padding: 8px 20px;
     border-radius: 8px;
-    border: 2px solid #ff0000;
+    border: 2px solid var(--accent);
     background: transparent;
-    color: #ff0000;
+    color: var(--accent);
     cursor: pointer;
     font-weight: 500;
     font-size: 14px;
@@ -68,14 +70,14 @@
 }
 
 .subscribe-box button:hover {
-    background: #ff0000;
-    color: #000;
+    background: var(--accent);
+    color: #fff;
 }
 
 /* Copyright */
 .footer-copy p {
     font-size: 12px;
-    color: #aaa;
+    color: var(--muted);
 }
 
 /* Responsive */

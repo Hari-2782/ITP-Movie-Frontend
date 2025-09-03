@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BiSearch, BiUserCircle } from "react-icons/bi";
+import { BsMoon, BsSun } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ onToggleTheme, currentTheme }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -71,8 +72,17 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Right Section - Auth Buttons */}
+        {/* Right Section - Auth Buttons + Theme Toggle */}
         <div className="nav-right">
+          <button
+            type="button"
+            className="btn theme-toggle-btn"
+            onClick={onToggleTheme}
+            aria-label="Toggle theme"
+            title={currentTheme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          >
+            {currentTheme === 'light' ? <BsMoon className="theme-icon" /> : <BsSun className="theme-icon" />}
+          </button>
           {isLoggedIn ? (
             <>
               <button className="btn logout-btn" onClick={handleLogout}>
@@ -115,6 +125,16 @@ const Navbar = () => {
             <Link to="/offer" className="mobile-link" onClick={() => setMobileOpen(false)}>
               Offers
             </Link>
+            <button
+              className="mobile-btn"
+              onClick={() => { onToggleTheme?.(); }}
+            >
+              {currentTheme === 'light' ? (
+                <><BsMoon style={{ marginRight: 8 }} /> Dark mode</>
+              ) : (
+                <><BsSun style={{ marginRight: 8 }} /> Light mode</>
+              )}
+            </button>
             <div className="mobile-divider" />
             {isLoggedIn ? (
               <>

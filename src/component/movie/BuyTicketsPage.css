@@ -1,15 +1,54 @@
 /* Header area */
 .buytickets .head {
     top: 10%;
-    background: linear-gradient(180deg, rgba(20,20,20,0.9) 0%, rgba(20,20,20,0.7) 100%);
+    background: transparent;
     padding: 80px 40px 24px 40px;
     max-width: 1100px;
     margin: 0 auto;
 }
 
-.buytickets {
-    background-color: #141414;
+/* Theme-specific header background for better aesthetics */
+:root.theme-dark .buytickets .head {
+    /* Match prior dark design with subtle gradient */
+    background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+:root.theme-light .buytickets .head {
+    background: rgba(255,255,255,0.85);
+}
+
+/* Ensure movie name (screen title) is visible in light theme */
+:root.theme-light .buytickets .screens .screen h2 { color: #111 !important; }
+
+/* Loader styles */
+.loader {
+    display: grid;
+    place-items: center;
+    gap: 10px;
+    padding: 24px 0;
+}
+.tv-loader {
+    font-size: 42px;
+    color: #e50914;
+    animation: tvPulse 1.2s ease-in-out infinite;
+}
+.loader-text {
     color: #e5e5e5;
+    font-weight: 700;
+}
+@keyframes tvPulse {
+    0% { transform: scale(0.95); filter: drop-shadow(0 0 0 rgba(229,9,20,0.0)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 4px 10px rgba(229,9,20,0.35)); }
+    100% { transform: scale(0.95); filter: drop-shadow(0 0 0 rgba(229,9,20,0.0)); }
+}
+
+@media (max-width: 520px) {
+    .buytickets .screens { grid-template-columns: 1fr; width: 100%; padding: 0; margin-left: 0; margin-right: 0; }
+}
+
+.buytickets {
+    background-color: var(--bg);
+    color: var(--text);
     min-height: 100vh;
     width: 100%;
 }
@@ -26,7 +65,7 @@
 .schedule-hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(20,20,20,0.65) 0%, rgba(20,20,20,0.9) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.9) 100%);
 }
 
 .schedule-hero__content {
@@ -38,7 +77,7 @@
 
 .schedule-hero__title {
     margin: 0;
-    color: #ffffff;
+    color: var(--text);
     font-size: 34px;
     font-weight: 800;
     text-shadow: 0 2px 8px rgba(0,0,0,0.6);
@@ -48,7 +87,7 @@
     margin-top: 6px;
     display: flex;
     gap: 10px;
-    color: #e5e5e5;
+    color: var(--muted);
     font-weight: 600;
 }
 
@@ -66,7 +105,7 @@
 }
 
 .month-label {
-    color: #fff;
+    color: var(--text);
     font-weight: 800;
     letter-spacing: .2px;
 }
@@ -79,13 +118,13 @@
     width: 34px;
     height: 34px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.18);
-    background: rgba(255,255,255,0.04);
-    color: #fff;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: var(--bg-elev);
+    color: var(--text);
     cursor: pointer;
     transition: all .2s ease;
 }
-.date-nav-btn:hover { border-color: #e50914; color: #fff; }
+.date-nav-btn:hover { border-color: var(--accent); color: var(--text); }
 
 /* Container with side arrows and the date grid in the middle */
 .date-strip-nav {
@@ -95,14 +134,26 @@
     gap: 10px;
 }
 
+/* Make sure arrows are always visible/tappable on small screens */
+@media (max-width: 600px) {
+  .date-strip-nav { gap: 6px; }
+  .date-nav-btn {
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+  }
+}
+
 /* 7-day date strip, no horizontal scroll. Uses responsive grid that wraps. */
 .date-strip {
     display: grid;
     grid-template-columns: repeat(7, minmax(72px, 1fr));
     gap: 10px;
     padding: 10px 6px;
-    background: #0f0f0f;
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--card);
+    border: 1px solid rgba(0,0,0,0.08);
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.45);
 }
@@ -127,36 +178,49 @@
     min-width: 68px;
     padding: 10px 8px;
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.18);
-    background: rgba(255,255,255,0.04);
-    color: #e5e5e5;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: transparent;
+    color: var(--muted);
     cursor: pointer;
     transition: all .2s ease;
 }
+.date-pill:hover { border-color: var(--accent); color: var(--text); }
+.date-pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-.date-pill:hover { border-color: #e50914; color: #fff; }
-.date-pill.active { background: #e50914; color: #fff; border-color: #e50914; }
+/* Disabled past dates */
+.date-pill.disabled,
+.date-pill:disabled {
+    opacity: 0.5;
+    filter: grayscale(30%);
+    cursor: not-allowed;
+}
+.date-pill.disabled:hover,
+.date-pill:disabled:hover {
+    border-color: rgba(0,0,0,0.12);
+    color: var(--muted);
+    background: rgba(0,0,0,0.04);
+}
 
 .date-pill__day { font-size: 11px; opacity: .85; }
 .date-pill__date { font-size: 20px; font-weight: 800; line-height: 1.1; }
 .date-pill__month { font-size: 11px; opacity: .9; }
 
 .buytickets .head h1 {
-    color: #fff;
+    color: var(--text);
     font-size: 36px;
     font-weight: 800;
     margin: 0;
 }
 
 .buytickets .head h3 {
-    color: #cfcfcf;
+    color: var(--muted);
     font-size: 13px;
     font-weight: 600;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(0,0,0,0.12);
     padding: 6px 14px;
     border-radius: 999px;
     width: fit-content;
-    background: rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.04);
 }
 
 /* Genre as chips row */
@@ -167,34 +231,114 @@
     font-weight: 600;
 }
 
+.buytickets .genre-chip {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: red;
+    font-size: 12px;
+    letter-spacing: .2px;
+    border: 1px solid red;
+}
+
 .buytickets .screens {
-    width: 90%;
-    margin: 20px auto 40px auto;
-    background: #0f0f0f;
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    width: 100%;
+    margin: 20px 0 40px 0;
+    display: grid;
+    grid-template-columns: 1fr; /* full-width single column */
+    gap: 16px;
+    align-items: stretch;
+    padding: 0; /* no gutter for true full width */
+}
+
+.buytickets .screens.loading {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin: 10px 0 30px 0;
+}
+
+/* Make the section title span the full row inside the grid */
+.buytickets .screens > .section-title {
+    grid-column: 1 / -1;
+    margin: 0 12px 4px 12px;
 }
 
 .buytickets .screens .screen {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0px;
-    padding: 12px 10px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 14px;
+    background: var(--card);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.theme-dark .buytickets .screens .screen {
+    /* slightly lifted in dark mode to avoid looking flat/too dark */
+    background: rgba(255,255,255,0.02);
+    border-color: rgba(255,255,255,0.10);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.6);
+}
+.buytickets .screens .screen:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.55);
+    border-color: rgba(255,255,255,0.18);
 }
 
-.buytickets .screens .screen:last-child {
-    border-bottom: none;
+.buytickets .screens .screen__left { display: flex; align-items: center; gap: 12px; }
+.buytickets .screens .screen-icon { color: #e50914; opacity: .95; font-size: 26px; }
+.buytickets .screens .screen h2 { font-size: 18px; font-weight: 700; color: var(--text); margin: 0; }
+.buytickets .screens .screen h3 { font-size: 13px; font-weight: 600; color: var(--muted); margin: 4px 0 0 0; }
+
+/* Chips for selected date/time */
+.buytickets .screens .screen__chips {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+.buytickets .screens .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .2px;
+}
+.buytickets .screens .date-badge {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(0,0,0,0.12);
+    color: var(--muted);
+}
+.buytickets .screens .time-badge {
+    background: rgba(229,9,20,0.12);
+    border: 1px solid rgba(229,9,20,0.35);
+    color: #fff;
 }
 
-.buytickets .screens .screen h2 { font-size: 18px; font-weight: 700; color: #fff; margin: 0; }
+/* Select button styling */
+.buytickets .screens .select-btn {
+    background: transparent;
+    border: 1px solid rgba(229,9,20,0.7);
+    color: var(--text);
+    padding: 8px 14px;
+    border-radius: 999px;
+    transition: all .2s ease;
+}
+.buytickets .screens .select-btn:hover {
+    background: #e50914;
+    border-color: #e50914;
+}
 
-.buytickets .screens .screen h3 { font-size: 13px; font-weight: 600; color: #cfcfcf; margin: 4px 0 0 0; }
+/* Ensure screen title/subtitle respect theme */
+.buytickets .screens .screen h2 { font-size: 18px; font-weight: 700; color: var(--text); margin: 0; }
+.buytickets .screens .screen h3 { font-size: 13px; font-weight: 600; color: var(--muted); margin: 4px 0 0 0; }
 
 .buytickets .time {
     display: flex;
@@ -215,14 +359,20 @@
 
 .buytickets .time .time-box {
     padding: 10px 16px;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(0,0,0,0.15);
     border-radius: 999px;
     cursor: pointer;
     transition: all 0.2s ease;
     min-width: 92px;
-    color: #e5e5e5;
-    background: rgba(255,255,255,0.04);
+    color: var(--muted);
+    background: transparent;
     text-align: center;
+}
+.theme-dark .buytickets .time .time-box {
+    border-color: rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.03);
+    color: #e5e5e5;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.35);
 }
 
 .buytickets .time .time-box.disabled {
@@ -230,8 +380,8 @@
 }
 
 .buytickets .time .time-box.disabled:hover {
-    color: #999;
-    background-color: rgba(255,255,255,0.06);
+    color: var(--muted);
+    background-color: rgba(0,0,0,0.06);
 }
 
 .buytickets .time .time-box:hover {
@@ -262,14 +412,28 @@
 .buytickets .calendar-wrap {
     width: 100%;
     margin-top: 16px;
-    background: #0f0f0f;
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--card);
+    border: 1px solid rgba(0,0,0,0.08);
     border-radius: 12px;
     padding: 12px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.45);
     display: flex;
     flex-direction: column; /* stack content vertically */
     align-items: center;     /* center inner items */
+}
+
+/* Ensure DayPicker internal container doesn't use default grey */
+.buytickets .calendar-wrap .rdp { 
+    background: var(--card) !important; 
+    border-radius: 10px;
+}
+.buytickets .calendar-wrap .rdp-months,
+.buytickets .calendar-wrap .rdp-month,
+.buytickets .calendar-wrap .rdp-table,
+.buytickets .calendar-wrap .rdp-tbody,
+.buytickets .calendar-wrap .rdp-head,
+.buytickets .calendar-wrap .rdp-caption { 
+    background: var(--card) !important; 
 }
 
 /* Two-column layout: calendar + times */
@@ -299,9 +463,9 @@
     margin: 0 auto; /* center calendar */
 }
 
-.buytickets .calendar-wrap .rdp-caption_label { color: #fff; font-weight: 700; }
-.buytickets .calendar-wrap .rdp-head_cell { color: #cfcfcf; }
-.buytickets .calendar-wrap .rdp-day { color: #e5e5e5; border-radius: 8px; }
+.buytickets .calendar-wrap .rdp-caption_label { color: var(--text); font-weight: 700; }
+.buytickets .calendar-wrap .rdp-head_cell { color: var(--muted); }
+.buytickets .calendar-wrap .rdp-day { color: var(--muted); border-radius: 8px; }
 .buytickets .calendar-wrap .rdp-day_today { border: 1px solid #e50914; }
 .buytickets .calendar-wrap .rdp-day_selected { background: #e50914; color: #fff; }
 
@@ -315,9 +479,9 @@
     flex-wrap: wrap; 
 }
 .buytickets .quick-date-btn { 
-    color: #e5e5e5; 
+    color: var(--muted);
     background: transparent; 
-    border: 1px solid rgba(255,255,255,0.12); 
+    border: 1px solid rgba(0,0,0,0.12); 
     border-radius: 999px; 
     padding: 6px 12px; 
     cursor: pointer; 
@@ -327,14 +491,14 @@
     height: auto; /* do not stretch */
     line-height: 1.2; 
 }
-.buytickets .quick-date-btn:hover { border-color: #e50914; color: #fff; }
+.buytickets .quick-date-btn:hover { border-color: var(--accent); color: var(--text); }
 .buytickets .quick-date-btn:active { transform: translateY(1px); }
 
 /* Selected date badge */
 .buytickets .selected-date-badge {
     margin-top: 10px;
     text-align: center;
-    color: #fff;
+    color: var(--text);
     background: rgba(229,9,20,0.12);
     border: 1px solid rgba(229,9,20,0.35);
     padding: 6px 12px;
@@ -354,7 +518,7 @@
 .buytickets .section-title {
     font-size: 18px;
     font-weight: 800;
-    color: #fff;
+    color: var(--text);
     margin: 4px 0 10px 0;
     text-align: center;
     white-space: nowrap; /* avoid breaking one letter per line */
@@ -378,13 +542,7 @@
 
     .buytickets .head h3 { font-size: 12px; }
 
-    .buytickets .screens { padding: 16px; width: calc(100% - 24px); margin-left: 12px; margin-right: 12px; }
-
-    .buytickets .screens .screen h2 { font-size: 16px; }
-
-    .buytickets .screens .screen h3 { font-size: 12px; }
-
-    .buytickets .time { margin-top: 10px; margin-left: 12px; margin-bottom: 10px; }
-
-    .buytickets .time .time-box { padding: 9px 16px; min-width: 78px; margin-bottom: 10px; }
+    .buytickets .screens { width: 100%; margin-left: 0; margin-right: 0; grid-template-columns: 1fr; padding: 0; }
+    .buytickets .screens .screen { padding: 12px; }
+    .buytickets .screens .select-btn { width: auto; }
 }

@@ -2,7 +2,7 @@ import moment from "moment";
 import React, { useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./BuyTicketsPage.css";
-import { FaClock } from "react-icons/fa";
+import { FaClock, FaTv } from "react-icons/fa";
 
 
 const BuyTicketsPage = () => {
@@ -11,10 +11,13 @@ const BuyTicketsPage = () => {
   const [selectedTime, setSelectedTime] = React.useState(null);
   const [movie, setMovie] = React.useState(null);
   const [theatres, setTheatres] = React.useState(null);
+  const [loadingMovie, setLoadingMovie] = React.useState(false);
+  const [loadingTheatres, setLoadingTheatres] = React.useState(false);
   const { movieid } = useParams();
   const screensRef = React.useRef(null);
 
   const getMovie = useCallback(async () => {
+    setLoadingMovie(true);
     fetch(`https://itp-movie-backend.vercel.app/movie/get/${movieid}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -24,12 +27,14 @@ const BuyTicketsPage = () => {
       .then((data) => {
         if (data.ok) setMovie(data.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setLoadingMovie(false));
   }, [movieid]);
 
   const getTheatres = useCallback(async () => {
     if (selectedTime) {
       try {
+        setLoadingTheatres(true);
         const formattedDate = moment(selectedDate).format("YYYY-MM-DD");
         const res = await fetch(
           `https://itp-movie-backend.vercel.app/screen/schedule/${formattedDate}/${selectedTime}/${movieid}`,
@@ -50,6 +55,8 @@ const BuyTicketsPage = () => {
         }
       } catch (error) {
         console.log("Fetch error:", error);
+      } finally {
+        setLoadingTheatres(false);
       }
     } else {
       setTheatres(null);
@@ -87,7 +94,7 @@ const BuyTicketsPage = () => {
 
   return (
     <div>
-      {movie ? (
+      {(!loadingMovie && movie) ? (
         <div className="buytickets">
           {/* Hero cover using landscape image */}
           {movie?.landscapeImgUrl && (
@@ -99,9 +106,23 @@ const BuyTicketsPage = () => {
               <div className="schedule-hero__content">
                 <h1 className="schedule-hero__title">{movie.title}</h1>
                 <div className="schedule-hero__meta">
-                  <span>{Array.isArray(movie.genre) ? movie.genre.join(", ") : movie.genre}</span>
-                  {movie.duration ? <span>• {movie.duration} mins</span> : null}
+                  {movie.duration ? <span>{movie.duration} mins</span> : null}
                 </div>
+                {/* Genre chips */}
+                {(() => {
+                  const genres = Array.isArray(movie.genre)
+                    ? movie.genre
+                    : typeof movie.genre === "string"
+                    ? movie.genre.split(",").map((g) => g.trim()).filter(Boolean)
+                    : [];
+                  return genres.length ? (
+                    <div className="genre-chips">
+                      {genres.map((g, i) => (
+                        <span key={i} className="genre-chip">{g}</span>
+                      ))}
+                    </div>
+                  ) : null;
+                })()}
               </div>
             </div>
           )}
@@ -143,12 +164,15 @@ const BuyTicketsPage = () => {
                   <div className="date-strip">
                   {daysInStrip.map((m, idx) => {
                     const isActive = moment(selectedDate).isSame(m, "day");
+                    const isPastDay = m.isBefore(moment().startOf("day"), "day");
                     return (
                       <button
                         type="button"
                         key={idx}
-                        className={`date-pill ${isActive ? "active" : ""}`}
+                        className={`date-pill ${isActive ? "active" : ""} ${isPastDay ? "disabled" : ""}`}
+                        disabled={isPastDay}
                         onClick={() => {
+                          if (isPastDay) return;
                           setSelectedDate(m.toDate());
                           setSelectedTime(null);
                           setTheatres(null);
@@ -201,6 +225,14 @@ const BuyTicketsPage = () => {
             </div>
           {/* close s1 */}
           </div>
+          {loadingTheatres && (
+            <div className="screens loading" ref={screensRef}>
+              <div className="loader">
+                <FaTv className="tv-loader" />
+                <div className="loader-text">Finding theatres...</div>
+              </div>
+            </div>
+          )}
           {theatres && theatres.length > 0 && (
             <div className="screens" ref={screensRef}>
               <h2 className="section-title" style={{ marginBottom: 12 }}>Available Theatres</h2>
@@ -208,16 +240,25 @@ const BuyTicketsPage = () => {
                 const screenid = screen._id;
                 return (
                   <div className="screen" key={index}>
-                    <div>
-                      <h2>{screen.name}</h2>
-                      <h3>{screen.screenType}</h3>
+                    <div className="screen__left">
+                      <FaTv className="screen-icon" />
+                      <div>
+                        <h2>{screen.name}</h2>
+                        <h3>{screen.screenType}</h3>
+                        <div className="screen__chips">
+                          <span className="badge date-badge">{moment(selectedDate).format("ddd, MMM D")}</span>
+                          {selectedTime && (
+                            <span className="badge time-badge"><FaClock style={{ marginRight: 6 }} />{moment(selectedTime, "HH:mm").format("h:mm A")}</span>
+                          )}
+                        </div>
+                      </div>
                     </div>
                     <button
                       onClick={() => {
                         const formattedDate = moment(selectedDate).format("YYYY-MM-DD");
                         navigate(`/seat-layout/${movieid}/${screenid}/${formattedDate}`);
                       }}
-                      className="theme_btn1 linkstylenone"
+                      className="theme_btn1 linkstylenone select-btn"
                     >
                       Select
                     </button>
@@ -235,8 +276,10 @@ const BuyTicketsPage = () => {
       ) : (
         <div className="buytickets">
           <div className="head">
-            <h1>Loading...</h1>
-            <h3>Please wait</h3>
+            <div className="loader">
+              <FaTv className="tv-loader" />
+              <div className="loader-text">Loading movie...</div>
+            </div>
           </div>
         </div>
       )}

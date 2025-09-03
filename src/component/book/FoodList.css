@@ -2,7 +2,7 @@
 .food-list-container {
   font-family: sans-serif;
   line-height: 1.5;
-  color: #212529;
+  color: var(--text);
   text-align: left;
   background-image: url("https://stock.adobe.com/search?k=food%20court"); /* Replace with your desired background image URL */
   background-size: cover;
@@ -21,16 +21,16 @@
   flex-wrap: wrap;
   margin-top: 70px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--bg-elev);
 }
 
 /* Food Type Button */
 .food-type {
   margin: 10px;
   padding: 10px;
-  border: 1px solid #6c757d;
+  border: 1px solid rgba(0,0,0,0.12);
   border-radius: 4px;
-  background-color: #f2f2f2;
+  background-color: var(--card);
   cursor: pointer;
   font-size: 18px;
   margin-bottom: 10px;
@@ -48,9 +48,9 @@
   flex: 0 0 25%;
   margin: 10px;
   padding: 15px;
-  border: 1px solid #6c757d;
+  border: 1px solid rgba(0,0,0,0.12);
   border-radius: 4px;
-  background-color: #fff;
+  background-color: var(--card);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -71,6 +71,6 @@
   top: 0;
   right: 0;
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--card);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }

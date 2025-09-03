@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaTicketAlt } from 'react-icons/fa';
+
 import { useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './SelectSeat.css';
@@ -14,10 +16,14 @@ const SelectSeatPage = () => {
 
     const [Screen, setScreen] = React.useState(null);
     const [selectedTime, setSelectedTime] = React.useState(null);
+    const [loadingScreen, setLoadingScreen] = React.useState(false);
+
 
     const [isLoggedIn, setIsLoggedIn] = React.useState(false)
     const getschedules = async () => {
+        setLoadingScreen(true);
         try {
+
             const response = await fetch(`https://itp-movie-backend.vercel.app/screen/schedulebymovie/${screenid}/${date}/${movieid}`, {
                 method: 'GET',
                 headers: {
@@ -43,11 +49,17 @@ const SelectSeatPage = () => {
             }
         } catch (err) {
             console.log(err);
+        } finally {
+            setLoadingScreen(false);
         }
     };
+
     const [movie, setMovie] = React.useState(null)
+    const [loadingMovie, setLoadingMovie] = React.useState(false)
+
 
     const getMovie = async () => {
+        setLoadingMovie(true);
         fetch(`https://itp-movie-backend.vercel.app/movie/get/${movieid}`, {
             method: 'GET',
             headers: {
@@ -65,7 +77,9 @@ const SelectSeatPage = () => {
             .catch((err) => {
                 console.log(err)
             })
+            .finally(() => setLoadingMovie(false))
     }
+
     const checkLogin = async () => {
         try {
             const res = await fetch('https://itp-movie-backend.vercel.app/user/checklogin', {
@@ -173,6 +187,13 @@ const SelectSeatPage = () => {
                                                                         s.col === colIndex
                                                                     )) ? "seat-selected" : "seat-available"
                                                                 }
+                                                                    data-seatlabel={
+                                                                        selectedSeats.find((s) => (
+                                                                            s.row === row.rowname &&
+                                                                            s.seat_id === seat.seat_id &&
+                                                                            s.col === colIndex
+                                                                        )) ? `${row.rowname}${seatIndex + 1}` : undefined
+                                                                    }
                                                                     onClick={() => selectdeselectseat({
                                                                         row: row.rowname,
                                                                         col: colIndex,
@@ -249,7 +270,19 @@ const SelectSeatPage = () => {
     return (
         <div className='selectseatpage'>
             {
-                movie && Screen &&
+                loadingScreen && (
+                    <div className='s1'>
+                        <div className='head'>
+                            <div className="loader">
+                                <FaTicketAlt className="ticket-loader" />
+                                <div className="loader-text">Loading screen...</div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+            {
+                movie && Screen && !loadingMovie && !loadingScreen &&
                 <div className='s1'>
                     <div className='head'>
                         <h1>{movie.title} - {Screen?.Screen?.name}</h1>
@@ -259,7 +292,7 @@ const SelectSeatPage = () => {
             }
 
             {
-                Screen &&
+                Screen && !loadingScreen &&
                 <div className="selectseat">
                     <div className='timecont'>
                         {
@@ -288,12 +321,14 @@ const SelectSeatPage = () => {
                             <p>Selected</p>
                         </div>
                     </div>
-                    <image src={exit}/>
-                    {generateSeatLayout()}
-                    <div class="banner">
-                  <h1>SCREEN</h1>
-                  </div>
-                    <div className="half-circle"></div>
+                    <img src={exit} className='exit-icon' alt='exit' />
+                    <div className='seat-scroll'>
+                        {generateSeatLayout()}
+                    </div>
+                    <div className="banner">
+                      <h1>SCREEN</h1>
+                      </div>
+                    <div className="screen-arc"></div>
                     <div className='totalcont'>
                         <div className='total'>
                             <h2>Total</h2>

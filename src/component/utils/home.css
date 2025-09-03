@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bg);
+  color: var(--text);
   font-family: 'Arial', sans-serif;
   overflow-x: hidden;
 }
@@ -17,7 +17,7 @@ body {
   display: flex;
   align-items: flex-end;
   padding: 50px;
-  background-color: #000;
+  background-color: var(--bg);
   overflow: hidden;
 }
 
@@ -46,13 +46,13 @@ body {
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 10px;
-  color: #e50914; /* red */
+  color: var(--accent); /* red */
 }
 
 .hero-content p {
   line-height: 1.5;
   margin-bottom: 20px;
-  color: #fff;
+  color: var(--muted);
 }
 
 .hero-buttons button {
@@ -66,13 +66,13 @@ body {
 }
 
 .hero-buttons .play {
-  background-color: #e50914;
+  background-color: var(--accent);
   color: #fff;
 }
 
 .hero-buttons .info {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
+  background-color: var(--bg-elev);
+  color: var(--text);
 }
 
 .hero-buttons button:hover {
@@ -84,7 +84,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 150px;
-  background-image: linear-gradient(180deg, transparent, #000);
+  background-image: linear-gradient(180deg, transparent, var(--bg));
 }
 
 /* Movie Rows */
@@ -95,7 +95,7 @@ body {
 
 .movie-row h2 {
   margin-bottom: 10px;
-  color: #e50914;
+  color: var(--accent);
 }
 
 .movie-row-cards {
