@@ -205,8 +205,8 @@ const App = () => {
     <div
       className="homeRoot"
       style={{
-        background: "#000000",
-        color: "white",
+        background: "var(--bg)",
+        color: "var(--text)",
         minHeight: "100vh",
         fontFamily: "Arial, sans-serif",
         overflowX: "hidden",
@@ -254,9 +254,10 @@ const App = () => {
             style={{
               fontSize: "40px",
               fontWeight: "bold",
-              textShadow: "2px 2px 10px black",
+              textShadow: "2px 2px 10px var(--bg)",
               transition: "opacity 1s, transform 1s",
               opacity: 1,
+              color: "var(--text)",
             }}
           >
             {banners[currentBanner].text}
@@ -274,10 +275,10 @@ const App = () => {
           <button
             style={{
               padding: "12px 32px",
-              background: "#dc2626",
+              background: "var(--accent)",
               border: "none",
               borderRadius: "9999px",
-              color: "white",
+              color: "#fff",
               fontWeight: "600",
               fontSize: "16px",
               cursor: "pointer",
@@ -295,7 +296,7 @@ const App = () => {
             style={{
               fontSize: "28px",
               fontWeight: "bold",
-              color: "#dc2626",
+              color: "var(--accent)",
               marginBottom: "24px",
             }}
           >
@@ -308,7 +309,7 @@ const App = () => {
             style={{
               fontSize: "28px",
               fontWeight: "bold",
-              color: "#dc2626",
+              color: "var(--accent)",
               marginBottom: "24px",
             }}
           >
@@ -321,11 +322,11 @@ const App = () => {
       {/* Footer */}
       <footer
         style={{
-          background: "#000000",
+          background: "var(--bg)",
           textAlign: "center",
           padding: "20px",
           marginTop: "40px",
-          color: "#9ca3af",
+          color: "var(--muted)",
         }}
       >
         <p>© {new Date().getFullYear()} CineMagic. All rights reserved.</p>

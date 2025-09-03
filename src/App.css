@@ -19,18 +19,18 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--bg-elev);
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text);
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--accent);
 }
 
 @keyframes App-logo-spin {
@@ -50,12 +50,30 @@ margin-bottom: 0px;
   text-align: center;
 }
 
+/* Theme tokens */
+:root.theme-dark {
+  --bg: #0b0b0b;
+  --bg-elev: #141414;
+  --text: #ffffff;
+  --muted: #e5e5e5;
+  --card: #0f0f0f;
+  --accent: #e50914;
+}
+:root.theme-light {
+  --bg: #ffffff;
+  --bg-elev: #f7f7f9;
+  --text: #111111;
+  --muted: #333333;
+  --card: #ffffff;
+  --accent: #e50914;
+}
+
 /* Global Styles */
 body, html {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #000000;
-  color: white;
+  background-color: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
 }
 
@@ -74,7 +92,7 @@ body, html {
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  background-color: #000000;
+  background-color: var(--bg);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -96,16 +114,16 @@ body, html {
 }
 
 .nav-links li:hover {
-  color: #e50914;
+  color: var(--accent);
   cursor: pointer;
 }
 
 .login-btn {
-  background-color: #e50914;
+  background-color: var(--accent);
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
-  color: white;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -154,7 +172,7 @@ h2 {
 .overlay {
   position: absolute;
   bottom: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
   width: 100%;
   padding: 10px;
   text-align: center;
@@ -168,7 +186,7 @@ h2 {
 
 .overlay button {
   margin-top: 10px;
-  background-color: #e50914;
+  background-color: var(--accent);
   border: none;
   padding: 6px 12px;
   border-radius: 4px;

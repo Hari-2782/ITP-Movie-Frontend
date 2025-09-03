@@ -25,28 +25,28 @@
 .searchbox {
     display: flex;
     align-items: center;
-    background: rgba(28, 28, 28, 0.7);
+    background: var(--bg-elev);
     padding: 8px 12px;
     border-radius: 12px;
     transition: background 0.3s ease;
 }
 
 .searchbox:hover {
-    background: rgba(28, 28, 28, 0.9);
+    filter: brightness(0.97);
 }
 
 .searchbox input {
     border: none;
     outline: none;
     background: transparent;
-    color: #fff;
+    color: var(--text);
     padding-left: 10px;
     width: 200px;
     font-size: 14px;
 }
 
 .search-icon {
-    color: #ff0000;
+    color: var(--accent);
     font-size: 22px;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .nav-link {
-    color: #fff;
+    color: var(--text);
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
@@ -72,7 +72,7 @@
     height: 2px;
     bottom: -4px;
     left: 0;
-    background-color: #ff0000;
+    background-color: var(--accent);
     transition: width 0.3s;
 }
 
@@ -81,7 +81,7 @@
 }
 
 .nav-link:hover {
-    color: #ff0000;
+    color: var(--accent);
 }
 
 /* Right - Auth Buttons & User Icon */
@@ -94,9 +94,9 @@
 .btn {
     padding: 8px 18px;
     border-radius: 8px;
-    border: 2px solid #ff0000;
+    border: 2px solid var(--accent);
     background: transparent;
-    color: #ff0000;
+    color: var(--accent);
     cursor: pointer;
     font-weight: 500;
     font-size: 14px;
@@ -104,24 +104,24 @@
 }
 
 .btn:hover {
-    background: #ff0000;
-    color: #000;
+    background: var(--accent);
+    color: #fff;
 }
 
 .user-icon {
     font-size: 28px;
-    color: #ff0000;
+    color: var(--accent);
     transition: color 0.3s;
     cursor: pointer;
 }
 
 .user-icon:hover {
-    color: #fff;
+    color: var(--text);
 }
 
 /* Responsive for Mobile */
 @media (max-width: 768px) {
-    .header-modern { background: rgba(20,20,20,0.85); }
+    .header-modern { background: var(--bg-elev); }
     .navbar { padding: 12px 16px; min-height: 56px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     .nav-left { display: none; }
     .nav-center { display: none; }
@@ -144,9 +144,9 @@
 /* Mobile toggle button */
 .mobile-toggle {
     display: inline-flex; /* visible by default */
-    background: rgba(28,28,28,0.7);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.2);
+    background: var(--bg-elev);
+    color: var(--text);
+    border: 1px solid rgba(0,0,0,0.12);
     border-radius: 10px;
     padding: 8px 10px;
     font-size: 20px;
@@ -169,8 +169,8 @@
 }
 
 .mobile-menu-panel {
-    background: #141414;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    background: var(--bg-elev);
+    border-top: 1px solid rgba(0,0,0,0.08);
     box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     padding: 12px 16px;
     display: grid;
@@ -183,25 +183,37 @@
 }
 
 .mobile-link {
-    color: #fff;
+    color: var(--text);
     text-decoration: none;
     padding: 10px 6px;
     border-radius: 8px;
 }
-.mobile-link:hover { background: rgba(255,255,255,0.06); }
+.mobile-link:hover { background: rgba(0,0,0,0.06); }
 
-.mobile-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 6px 0; }
+.mobile-divider { height: 1px; background: rgba(0,0,0,0.1); margin: 6px 0; }
 
 .mobile-btn {
     width: 100%;
     padding: 10px 12px;
     border-radius: 8px;
-    border: 2px solid #ff0000;
+    border: 2px solid var(--accent);
     background: transparent;
-    color: #ff0000;
+    color: var(--accent);
     font-weight: 600;
 }
-.mobile-btn:hover { background: #ff0000; color: #000; }
+.mobile-btn:hover { background: var(--accent); color: #fff; }
+
+/* Theme toggle button as icon */
+.theme-toggle-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.theme-icon { font-size: 18px; }
 
 @keyframes dropdown {
     from { transform: translateY(-10px); opacity: 0; }

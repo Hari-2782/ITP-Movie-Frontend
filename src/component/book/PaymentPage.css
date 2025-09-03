@@ -4,11 +4,11 @@
 .payment-container {
   padding-top: 0;
   margin-top: 140px;
-  background-color: #f7f7f7;
+  background-color: var(--card);
   padding: 50px;
   margin: 40px auto; /* Center the container horizontally */
   width: 500px; /* Adjust the width as needed */
-  border: 1px solid #ddd; /* Optional border for the container */
+  border: 1px solid rgba(0,0,0,0.12); /* Optional border for the container */
   border-radius: 5px; /* Add rounded corners */
   display: flex;
   flex-direction: column; /* Arrange content vertically */
@@ -49,23 +49,23 @@
 /* Button */
 button {
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--accent);
+  color: #fff;
   border: none;
   cursor: pointer;
   border-radius: 5px; 
 }
 
 button:hover {
-  background-color: #000; 
-  color: red;
+  opacity: 0.9;
+  color: #fff;
   
 }
 
 /* Footer */
 .footer {
-  background-color: rgb(1, 9, 48);
-  color: white;
+  background-color: var(--bg);
+  color: var(--text);
   padding: 10px 0;
   text-align: center;
   position: relative;
@@ -73,7 +73,7 @@ button:hover {
 
 /* Navigation (if needed) */
 .nav {
-  background-color: rgb(1, 9, 48);
+  background-color: var(--bg);
 }
 
 /* Example footer styling */
