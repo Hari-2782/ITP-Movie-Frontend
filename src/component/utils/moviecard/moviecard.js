@@ -6,19 +6,26 @@ import "./MovieCard.css";
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   if (!movie) return null;
+
   const { _id, title, genre = [], rating, portraitImgUrl } = movie;
 
   return (
     <div className="movie-card" onClick={() => navigate(`/movies/${_id}`)}>
-      <img src={portraitImgUrl} alt={title} className="movie-poster" />
+      {/* Top-left cinema logo */}
+      <div className="cinemagi-logo">C</div>
 
-      <div className="movie-overlay">
-        <h3 className="movie-title">{title}</h3>
-        <p className="movie-genre">{Array.isArray(genre) ? genre.join(", ") : ""}</p>
-        <div className="movie-rating">
-          <BsFillStarFill className="star" />
-          {rating}/10
+      <div className="poster-wrapper">
+        <img src={portraitImgUrl} alt={title} className="movie-poster" />
+
+        {/* Gradient overlay behind text */}
+        <div className="text-overlay">
+          <h3 className="movie-title">{title}</h3>
+          <div className="movie-rating">
+            <BsFillStarFill className="star" /> {rating}/10
+          </div>
         </div>
+
+        {/* Book Now button only on hover */}
         <button
           className="book-btn"
           onClick={(e) => {

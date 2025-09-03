@@ -155,3 +155,6 @@ h2 {
   border-radius: 4px;
   cursor: pointer;
 }
+.sliderout{
+  padding-left: 35px !important;
+}
