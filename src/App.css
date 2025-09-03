@@ -195,3 +195,32 @@ h2 {
 .sliderout{
   padding-left: 35px !important;
 }
+
+/* Theme toggle visibility (generic) */
+.theme-toggle, .mode-toggle, [data-theme-toggle], .toggle-theme {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid var(--toggle-border, rgba(255,255,255,0.6));
+  background: var(--toggle-bg, rgba(255,255,255,0.08));
+  color: var(--toggle-fg, #fff);
+  cursor: pointer;
+}
+:root.theme-light .theme-toggle, :root.theme-light .mode-toggle, :root.theme-light [data-theme-toggle], :root.theme-light .toggle-theme {
+  --toggle-border: rgba(0,0,0,0.25);
+  --toggle-bg: #ffffff;
+  --toggle-fg: #111111;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+:root.theme-dark .theme-toggle, :root.theme-dark .mode-toggle, :root.theme-dark [data-theme-toggle], :root.theme-dark .toggle-theme {
+  --toggle-border: rgba(255,255,255,0.45);
+  --toggle-bg: rgba(255,255,255,0.08);
+  --toggle-fg: #ffffff;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.06);
+}
+.theme-toggle:hover, .mode-toggle:hover, [data-theme-toggle]:hover, .toggle-theme:hover {
+  filter: brightness(1.05);
+}
