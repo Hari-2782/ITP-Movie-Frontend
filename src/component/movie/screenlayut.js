@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaTicketAlt } from 'react-icons/fa';
+import { FaTicketAlt, FaCrown, FaMedal } from 'react-icons/fa';
+import { GiCutDiamond } from 'react-icons/gi';
 
 import { useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -156,7 +157,24 @@ const SelectSeatPage = () => {
                    
                 {Screen.Screen.seats.map((seatType, index) => (
                     <div className="seat-type" key={index}>
-                        <h2>{seatType.type} - Rs. {seatType.price}</h2>
+                        <h2>
+                            {seatType.type === 'Gold' && (
+                                <span className="tier-badge tier-gold" title="Gold">
+                                    <FaCrown />
+                                </span>
+                            )}
+                            {seatType.type === 'Platinum' && (
+                                <span className="tier-badge tier-platinum" title="Platinum">
+                                    <GiCutDiamond />
+                                </span>
+                            )}
+                            {seatType.type === 'Silver' && (
+                                <span className="tier-badge tier-silver" title="Silver">
+                                    <FaMedal />
+                                </span>
+                            )}
+                            {seatType.type} - Rs. {seatType.price}
+                        </h2>
                         <div className='seat-rows'>
                             {seatType.rows.map((row, rowIndex) => (
                                 <div className="seat-row" key={rowIndex}>
@@ -326,10 +344,9 @@ const SelectSeatPage = () => {
                     <div className='seat-scroll'>
                         {generateSeatLayout()}
                     </div>
-                    <div className="banner">
-                      <h1>SCREEN</h1>
-                      </div>
-                    <div className="screen-arc"></div>
+                    <div className="screen-arc">
+                      <div className="screen-label">{Screen?.Screen?.screenType || Screen?.Screen?.type || 'SCREEN'}</div>
+                    </div>
                     <div className='totalcont'>
                         <div className='selected-seats' aria-label='Selected seats'>
                             <span className='selected-seats-label'>Selected Seats{selectedSeats.length ? ` (${selectedSeats.length})` : ''}:</span>
