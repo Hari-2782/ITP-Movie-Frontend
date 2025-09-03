@@ -1,7 +1,5 @@
 import moment from "moment";
 import React, { useCallback } from "react";
-import { DayPicker } from "react-day-picker";
-import "react-day-picker/dist/style.css";
 import { useNavigate, useParams } from "react-router-dom";
 import "./BuyTicketsPage.css";
 import { FaClock } from "react-icons/fa";
@@ -80,69 +78,98 @@ const BuyTicketsPage = () => {
   }, [theatres]);
 
   const isToday = moment(selectedDate).isSame(moment(), "day");
+  // Start of the 7-day window shown in the strip
+  const [stripStart, setStripStart] = React.useState(moment().startOf("day"));
+  const daysInStrip = React.useMemo(
+    () => Array.from({ length: 7 }, (_, i) => stripStart.clone().add(i, "day")),
+    [stripStart]
+  );
 
   return (
     <div>
       {movie ? (
         <div className="buytickets">
-          <div className="s1">
-            <div className="head">
-              <h1>{movie.title} - Tamil</h1>
-              <h3 className="genre-chips">{movie.genre.join(", ")}</h3>
-              <div className="schedule-grid">
-                <div className="calendar-wrap">
-                  <h2 className="section-title">Pick a date</h2>
-                  <DayPicker
-                    mode="single"
-                    selected={selectedDate}
-                    onSelect={(date) => {
-                      if (date) {
-                        setSelectedDate(date);
-                        // Reset time and theatres when date changes
-                        setSelectedTime(null);
-                        setTheatres(null);
-                      }
-                    }}
-                  disabled={{ before: new Date() }}
-                  showOutsideDays
-                  styles={{
-                    caption: { color: "#fff", fontWeight: 700 },
-                    head_cell: { color: "#cfcfcf" },
-                    day: { color: "#e5e5e5" },
-                    day_selected: { backgroundColor: "#e50914", color: "#fff" },
-                    day_today: { border: "1px solid #e50914" },
-                  }}
-                />
-                <div className="selected-date-badge">
-                  {moment(selectedDate).format("ddd, MMM D, YYYY")}
-                </div>
-                <div className="quick-dates">
-                  <button
-                    type="button"
-                    className="quick-date-btn"
-                    onClick={() => {
-                      const today = new Date();
-                      setSelectedDate(today);
-                      setSelectedTime(null);
-                      setTheatres(null);
-                    }}
-                  >
-                    Today
-                  </button>
-                  <button
-                    type="button"
-                    className="quick-date-btn"
-                    onClick={() => {
-                      const tomorrow = moment().add(1, "day").toDate();
-                      setSelectedDate(tomorrow);
-                      setSelectedTime(null);
-                      setTheatres(null);
-                    }}
-                  >
-                    Tomorrow
-                  </button>
+          {/* Hero cover using landscape image */}
+          {movie?.landscapeImgUrl && (
+            <div
+              className="schedule-hero"
+              style={{ backgroundImage: `url(${movie.landscapeImgUrl})` }}
+            >
+              <div className="schedule-hero__overlay" />
+              <div className="schedule-hero__content">
+                <h1 className="schedule-hero__title">{movie.title}</h1>
+                <div className="schedule-hero__meta">
+                  <span>{Array.isArray(movie.genre) ? movie.genre.join(", ") : movie.genre}</span>
+                  {movie.duration ? <span>• {movie.duration} mins</span> : null}
                 </div>
               </div>
+            </div>
+          )}
+          <div className="s1">
+            <div className="head">
+              <h1 className="visually-hidden">{movie.title}</h1>
+              <div className="schedule-grid">
+                {/* Month header with arrows */}
+                <div className="date-header">
+                  <button
+                    type="button"
+                    className="date-nav-btn"
+                    aria-label="Previous month"
+                    onClick={() => setStripStart((p) => p.clone().subtract(1, "month").startOf("month"))}
+                  >
+                    ◀
+                  </button>
+                  <div className="month-label">{stripStart.format("MMMM YYYY")}</div>
+                  <button
+                    type="button"
+                    className="date-nav-btn"
+                    aria-label="Next month"
+                    onClick={() => setStripStart((p) => p.clone().add(1, "month").startOf("month"))}
+                  >
+                    ▶
+                  </button>
+                </div>
+
+                {/* 7-day strip with left/right arrows */}
+                <div className="date-strip-nav">
+                  <button
+                    type="button"
+                    className="date-nav-btn"
+                    aria-label="Previous days"
+                    onClick={() => setStripStart((p) => p.clone().subtract(7, "day"))}
+                  >
+                    ◀
+                  </button>
+                  <div className="date-strip">
+                  {daysInStrip.map((m, idx) => {
+                    const isActive = moment(selectedDate).isSame(m, "day");
+                    return (
+                      <button
+                        type="button"
+                        key={idx}
+                        className={`date-pill ${isActive ? "active" : ""}`}
+                        onClick={() => {
+                          setSelectedDate(m.toDate());
+                          setSelectedTime(null);
+                          setTheatres(null);
+                        }}
+                      >
+                        <div className="date-pill__day">{m.isSame(moment(), "day") ? "TODAY" : m.format("dd").toUpperCase()}</div>
+                        <div className="date-pill__date">{m.format("DD")}</div>
+                        <div className="date-pill__month">{m.format("MMM")}</div>
+                      </button>
+                    );
+                  })}
+                  </div>
+                  <button
+                    type="button"
+                    className="date-nav-btn"
+                    aria-label="Next days"
+                    onClick={() => setStripStart((p) => p.clone().add(7, "day"))}
+                  >
+                    ▶
+                  </button>
+                </div>
               <div className="time">
                 <h2 className="section-title">Pick a time</h2>
                 <div className="time-boxes">
