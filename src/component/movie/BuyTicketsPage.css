@@ -3,6 +3,8 @@
     top: 10%;
     background: linear-gradient(180deg, rgba(20,20,20,0.9) 0%, rgba(20,20,20,0.7) 100%);
     padding: 80px 40px 24px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .buytickets {
@@ -32,6 +34,14 @@
     border-radius: 999px;
     width: fit-content;
     background: rgba(255,255,255,0.06);
+}
+
+/* Genre as chips row */
+.buytickets .genre-chips {
+    display: inline-flex;
+    gap: 6px;
+    margin-top: 10px;
+    font-weight: 600;
 }
 
 .buytickets .screens {
@@ -66,14 +76,14 @@
 .buytickets .time {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     margin-top: 24px;
-    margin-left: 20px;
+    margin-left: 0;
 }
 
 .buytickets .time .time-boxes {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: 16px;
     margin-bottom: 16px;
     gap: 10px;
@@ -123,6 +133,112 @@
 
 .buytickets .s1 {
     padding: 0 20px;
+}
+
+/* DayPicker dark theme */
+.buytickets .calendar-wrap {
+    width: 100%;
+    margin-top: 16px;
+    background: #0f0f0f;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    display: flex;
+    flex-direction: column; /* stack content vertically */
+    align-items: center;     /* center inner items */
+}
+
+/* Two-column layout: calendar + times */
+.buytickets .schedule-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: start; /* top-align columns */
+}
+
+@media (min-width: 900px) {
+    .buytickets .schedule-grid {
+        grid-template-columns: 420px 1fr;
+        align-items: start;  /* ensure right column aligns to top */
+    }
+}
+
+/* Prevent left column from stretching to match right column height */
+.buytickets .calendar-wrap { align-self: start; }
+
+/* React Day Picker vars */
+.buytickets .calendar-wrap .rdp {
+    --rdp-accent-color: #e50914;
+    --rdp-accent-background-color: #e50914;
+    --rdp-background-color: transparent;
+    --rdp-outline: 2px solid #e50914;
+    --rdp-outline-selected: 2px solid #e50914;
+    --rdp-day-height: 36px;
+    --rdp-day-width: 36px;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto; /* center calendar */
+}
+
+.buytickets .calendar-wrap .rdp-caption_label { color: #fff; font-weight: 700; }
+.buytickets .calendar-wrap .rdp-head_cell { color: #cfcfcf; }
+.buytickets .calendar-wrap .rdp-day { color: #e5e5e5; border-radius: 8px; }
+.buytickets .calendar-wrap .rdp-day_today { border: 1px solid #e50914; }
+.buytickets .calendar-wrap .rdp-day_selected { background: #e50914; color: #fff; }
+
+/* Quick date buttons */
+.buytickets .quick-dates { 
+    display: flex; 
+    gap: 8px; 
+    margin-top: 10px; 
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap; 
+}
+.buytickets .quick-date-btn { 
+    color: #e5e5e5; 
+    background: transparent; 
+    border: 1px solid rgba(255,255,255,0.12); 
+    border-radius: 999px; 
+    padding: 6px 12px; 
+    cursor: pointer; 
+    transition: all .2s ease; 
+    display: inline-flex; 
+    align-items: center; 
+    height: auto; /* do not stretch */
+    line-height: 1.2; 
+}
+.buytickets .quick-date-btn:hover { border-color: #e50914; color: #fff; }
+.buytickets .quick-date-btn:active { transform: translateY(1px); }
+
+/* Selected date badge */
+.buytickets .selected-date-badge {
+    margin-top: 10px;
+    text-align: center;
+    color: #fff;
+    background: rgba(229,9,20,0.12);
+    border: 1px solid rgba(229,9,20,0.35);
+    padding: 6px 12px;
+    border-radius: 999px;
+    display: inline-block;
+}
+
+/* Section headings */
+.buytickets .section-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    margin: 4px 0 10px 0;
+    text-align: center;
+    white-space: nowrap; /* avoid breaking one letter per line */
+    width: 100%;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .buytickets .calendar-wrap { padding: 8px; border-radius: 10px; }
+    .buytickets .calendar-wrap .rdp { max-width: 100%; }
 }
 
 /* Responsive */
