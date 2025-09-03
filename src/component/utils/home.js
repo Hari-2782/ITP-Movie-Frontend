@@ -177,21 +177,19 @@ const App = () => {
   const [currentBanner, setCurrentBanner] = useState(0);
   const banners = [
     {
-      img:
-        "https://media.themoviedb.org/t/p/w1066_and_h600_bestv2/pj1wFbZF3gpEg7F0EreXTvZNZTG.jpg",
+      img: "https://4kwallpapers.com/images/wallpapers/peacemaker-eagly-5120x2880-22805.jpg",
       text: "CineMagic: Feel the Thrill of Hollywood",
     },
     {
-      img: "https://4kwallpapers.com/images/walls/thumbs_3t/22621.jpg",
+      img: "https://4kwallpapers.com/images/wallpapers/spider-man-no-way-home-doctor-strange-2021-movies-willem-4480x2520-6975.jpg",
       text: "CineMagic: Dive into Anime Worlds",
     },
     {
-      img:
-        "https://media.themoviedb.org/t/p/w1066_and_h600_bestv2/iux1vKPT7Vw1AzetZb4Jz6wfYsm.jpg",
+      img: "https://4kwallpapers.com/images/walls/thumbs_3t/17296.jpg",
       text: "CineMagic: Explore Mind-Bending Stories",
     },
     {
-      img: "https://4kwallpapers.com/images/walls/thumbs_3t/23673.jpg",
+      img: "https://media.themoviedb.org/t/p/w1066_and_h600_bestv2/aAp0AkCBsMUDFCuLyd3MTcJ6ZV5.jpg",
       text: "CineMagic: Witness Epic Anime Battles",
     },
   ];
@@ -217,7 +215,12 @@ const App = () => {
       {/* Hero */}
       <section
         className="homeHero"
-        style={{ position: "relative", height: "90vh", overflow: "hidden", width: "100vw" }}
+        style={{
+          position: "relative",
+          height: "70vh",
+          overflow: "hidden",
+          width: "100vw",
+        }}
       >
         {banners.map((b, i) => (
           <img
@@ -230,6 +233,7 @@ const App = () => {
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              objectPosition: "center", // keep top visible; crop bottom
               opacity: currentBanner === i ? 1 : 0,
               transition: "opacity 1.2s ease-in-out",
               transform: "scale(1.1)",
