@@ -198,7 +198,8 @@ const SelectSeatPage = () => {
                                                                         row: row.rowname,
                                                                         col: colIndex,
                                                                         seat_id: seat.seat_id,
-                                                                        price: seatType.price
+                                                                        price: seatType.price,
+                                                                        seatNo: seatIndex + 1
                                                                     })}
                                                                 >
                                                                     {seatIndex + 1}
@@ -330,16 +331,30 @@ const SelectSeatPage = () => {
                       </div>
                     <div className="screen-arc"></div>
                     <div className='totalcont'>
+                        <div className='selected-seats' aria-label='Selected seats'>
+                            <span className='selected-seats-label'>Selected Seats{selectedSeats.length ? ` (${selectedSeats.length})` : ''}:</span>
+                            {selectedSeats.length > 0 ? (
+                                [...selectedSeats]
+                                  .sort((a,b) => a.row.localeCompare(b.row) || a.seatNo - b.seatNo)
+                                  .map((s, i) => (
+                                    <span key={`${s.row}-${s.seat_id}-${s.col}-${i}`} className='seat-chip'>
+                                        {s.row}{s.seatNo}
+                                    </span>
+                                  ))
+                            ) : (
+                                <span className='empty-text'>No seats selected</span>
+                            )}
+                        </div>
                         <div className='total'>
                             <h2>Total</h2>
                             <h3>Rs. {selectedSeats.reduce((acc, seat) => acc + seat.price, 0)}</h3>
                         </div>
-                        
                         <button
                             className='theme_btn1 linkstylenone'
-                            onClick={handleBooking} 
+                            onClick={handleBooking}
                         >
-                        Book Now</button>
+                            Book Now
+                        </button>
                     </div>
                 </div>
             }

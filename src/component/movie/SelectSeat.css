@@ -147,6 +147,30 @@
     font-size: 12px;
 }
 
+/* Light theme: make seats white with black text and border for visibility */
+:root.theme-light .seat-available,
+:root.theme-light .seat-unavailable,
+:root.theme-light .seat-selected {
+    background: #ffffff;
+    border-color: rgba(0,0,0,0.25);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.06);
+    color: #111111;
+}
+
+/* Keep selected seat accent in light theme */
+:root.theme-light .seat-selected {
+    color: #ffffff;
+    background: linear-gradient(180deg, #e50914 0%, #b40810 100%);
+    border-color: #e50914;
+}
+
+/* Unavailable seats in light theme: light gray tone */
+:root.theme-light .seat-unavailable {
+    background: #eeeeee;
+    color: #999999;
+    border-color: rgba(0,0,0,0.15);
+}
+
 
 
 /* Style for unavailable seats */
@@ -192,28 +216,57 @@
 /* TOTAL */
 
 .selectseat .totalcont {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px;
     padding: 14px 16px;
     background: var(--bg-elev);
     margin: 20px 0 0 0;
     border-radius: 10px;
     border: 1px solid rgba(0,0,0,0.12);
-    width: min(340px, 92%);
+    width: min(760px, 96%);
 }
 
 .selectseat .totalcont .total {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    justify-content: flex-end;
+    gap: 10px;
     align-items: center;
 }
 
 .selectseat .totalcont .total h2 { font-size: 14px; font-weight: 700; color: var(--muted); }
 
 .selectseat .totalcont .total h3 { font-size: 16px; font-weight: 800; color: var(--text); }
+
+/* Selected seats list */
+.selected-seats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.seat-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .2px;
+    background: rgba(229,9,20,0.10);
+    border: 1px solid rgba(229,9,20,0.35);
+    color: var(--text);
+}
+.selected-seats-label { color: var(--muted); font-size: 12px; font-weight: 800; margin-right: 6px; }
+.empty-text { color: var(--muted); font-size: 12px; }
+
+@media screen and (max-width: 560px) {
+  .selectseat .totalcont { grid-template-columns: 1fr; gap: 8px; }
+  .selectseat .totalcont .total { justify-content: space-between; }
+}
+
+/* Right-align primary action inside grid */
+.selectseat .totalcont > button { justify-self: end; }
 
 .selectseat .timecont { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 16px 0 12px 0; flex-wrap: wrap; }
 
@@ -226,6 +279,12 @@
     cursor: pointer;
     color: var(--muted);
     background: transparent;
+}
+
+/* Light theme: time chips use dark border and text */
+:root.theme-light .selectseat .timecont .time {
+    border-color: rgba(0,0,0,0.18);
+    color: var(--text);
 }
 
 .selectseat .timecont .selected { border: 1px solid #e50914; color: #fff; background: #e50914; }
