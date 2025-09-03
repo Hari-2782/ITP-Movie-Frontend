@@ -205,7 +205,7 @@ const App = () => {
     <div
       className="homeRoot"
       style={{
-        background: "#0f172a",
+        background: "#000000",
         color: "white",
         minHeight: "100vh",
         fontFamily: "Arial, sans-serif",
@@ -321,7 +321,7 @@ const App = () => {
       {/* Footer */}
       <footer
         style={{
-          background: "#111827",
+          background: "#000000",
           textAlign: "center",
           padding: "20px",
           marginTop: "40px",

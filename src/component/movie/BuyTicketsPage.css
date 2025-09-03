@@ -14,9 +14,132 @@
     width: 100%;
 }
 
+/* Hero banner on schedule page */
+.schedule-hero {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+
+.schedule-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20,20,20,0.65) 0%, rgba(20,20,20,0.9) 100%);
+}
+
+.schedule-hero__content {
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    bottom: 20px;
+}
+
+.schedule-hero__title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 800;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.schedule-hero__meta {
+    margin-top: 6px;
+    display: flex;
+    gap: 10px;
+    color: #e5e5e5;
+    font-weight: 600;
+}
+
 .buytickets .s1 {
     background-color: transparent;
 }
+
+/* Month header above the date strip */
+.date-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 6px 0 4px 0;
+}
+
+.month-label {
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: .2px;
+}
+
+/* Navigation arrows (both month and strip) */
+.date-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+.date-nav-btn:hover { border-color: #e50914; color: #fff; }
+
+/* Container with side arrows and the date grid in the middle */
+.date-strip-nav {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 7-day date strip, no horizontal scroll. Uses responsive grid that wraps. */
+.date-strip {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(72px, 1fr));
+    gap: 10px;
+    padding: 10px 6px;
+    background: #0f0f0f;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+
+@media (max-width: 900px) {
+    .date-strip { grid-template-columns: repeat(5, minmax(64px, 1fr)); }
+}
+
+@media (max-width: 600px) {
+    .date-strip { grid-template-columns: repeat(4, minmax(60px, 1fr)); }
+}
+
+@media (max-width: 420px) {
+    .date-strip { grid-template-columns: repeat(3, minmax(56px, 1fr)); }
+}
+
+.date-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 68px;
+    padding: 10px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.04);
+    color: #e5e5e5;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.date-pill:hover { border-color: #e50914; color: #fff; }
+.date-pill.active { background: #e50914; color: #fff; border-color: #e50914; }
+
+.date-pill__day { font-size: 11px; opacity: .85; }
+.date-pill__date { font-size: 20px; font-weight: 800; line-height: 1.1; }
+.date-pill__month { font-size: 11px; opacity: .9; }
 
 .buytickets .head h1 {
     color: #fff;
@@ -152,17 +275,12 @@
 /* Two-column layout: calendar + times */
 .buytickets .schedule-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* single column at all sizes */
     gap: 24px;
-    align-items: start; /* top-align columns */
+    align-items: start;
 }
 
-@media (min-width: 900px) {
-    .buytickets .schedule-grid {
-        grid-template-columns: 420px 1fr;
-        align-items: start;  /* ensure right column aligns to top */
-    }
-}
+/* previously two-column layout removed to keep times below the dates */
 
 /* Prevent left column from stretching to match right column height */
 .buytickets .calendar-wrap { align-self: start; }
@@ -224,6 +342,14 @@
     display: inline-block;
 }
 
+/* A11y utility */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
 /* Section headings */
 .buytickets .section-title {
     font-size: 18px;
@@ -244,6 +370,9 @@
 /* Responsive */
 @media (max-width: 768px) {
     .buytickets .head { padding: 90px 16px 14px 16px; }
+
+    .schedule-hero { height: 220px; }
+    .schedule-hero__content { left: 16px; right: 16px; }
 
     .buytickets .head h1 { font-size: 22px; }
 

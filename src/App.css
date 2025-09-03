@@ -54,7 +54,7 @@ margin-bottom: 0px;
 body, html {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #141414;
+  background-color: #000000;
   color: white;
   overflow-x: hidden;
 }
@@ -74,7 +74,7 @@ body, html {
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  background-color: #141414;
+  background-color: #000000;
   position: sticky;
   top: 0;
   z-index: 100;
