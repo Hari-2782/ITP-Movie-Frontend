@@ -8,7 +8,7 @@ import Login from "./component/user/login";
 import Signup from "./component/user/register";
 import Footer from "./component/utils/footer/footer";
 import HomeSlider from "./component/utils/home";
-import MovieCarousel from "./component/utils/moviecard/movieCarousel";
+import MoviesPage from "./component/movie/MoviesPage";
 import MovieCard from "./component/utils/moviecard/moviecard";
 import Navbar from "./component/utils/navbar/navbar";
 import FoodList from "./component/book/food";
@@ -32,7 +32,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomeSlider />} />
-          <Route path="/movie" element={<MovieCarousel />} />
+          <Route path="/movie" element={<MoviesPage />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />

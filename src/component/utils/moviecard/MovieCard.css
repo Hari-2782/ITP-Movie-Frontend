@@ -1,82 +1,105 @@
-.moviecard {
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid var(--col2);
-    box-shadow: 0px 0px 10px 5px #f4f4f4;
-    height: 100%;
-    width: 100%;
-    margin-top: px;
-    margin-left: 0px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    position: relative;
-    cursor: pointer;
+.movie-card {
+  position: relative;
+  width: 180px;
+  cursor: pointer;
+  overflow: hidden; /* ensure overlay is clipped */
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-.moviecard .movieimg {
-    object-fit: contain;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 400px;
-    position: relative;
-}
-.moviecard .movieimg .rating {
-    background-color: rgb(0, 0, 0,0.8) ;
-    position: absolute;
-    bottom: 0;
-    /* margin-bottom: 0; */
-    width: 100%;
-    color: rgb(255, 255, 255);
-    padding: 5px;
+.movie-card:hover {
+  transform: scale(1.08);
+  z-index: 10;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
 }
 
-.moviecard .movieimg .rating .star{
-    color: var(--col1);
+/* Top-left cinema logo */
+.cinemagi-logo {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
-
-.moviecard .details{
-    padding: 5px 10px;
+.poster-wrapper {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  overflow: hidden; /* fix: gradient stays inside card */
+  border-radius: 8px;
 }
 
-.moviecard .details .title{
-    font-size: 16px;
-    font-weight: 600;
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-
-.moviecard .details .type{
-    font-size: 12px;
-    font-weight: 600;
-    color: grey;
+/* Gradient overlay inside poster wrapper */
+.text-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 70%);
+  color: #fff;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-.swiper-slide {
-    left: -105px;
-    top: -180px;
-    margin-bottom: -100px;
-    right:0;
-    }
-    @media (max-width:490px) {
-        .swiper-slide {
-            top: -200px;
-            padding: 110px ;
-            padding-bottom: 0;
-            margin-bottom: -30px;
-            margin-left: -210px;
-         
-            }
-            
-          
-      
-    }
 
-    .rating-label {
-        color: yellow;
-    }
-    
+.movie-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
-      
-    
+.movie-rating {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.movie-rating .star {
+  color: gold;
+  margin-right: 4px;
+}
+
+/* Book Now button only visible on hover */
+.book-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: #e50914; /* Netflix red */
+  border: none;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.movie-card:hover .book-btn {
+  opacity: 1;
+}

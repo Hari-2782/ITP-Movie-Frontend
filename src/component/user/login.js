@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc"; // Google logo
 import { FaApple } from "react-icons/fa"; // Apple logo
 import "./auth.css";
+import { sendOTP, loginWithOtp } from "../../api/auth";
 
 const Login = () => {
   const [step, setStep] = useState(1);
@@ -36,50 +37,34 @@ const Login = () => {
   const handleRequestOTP = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `https://itp-movie-backend.vercel.app/user/sendOTP`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
-          credentials: "include",
-        }
-      );
-      const data = await response.json();
-      if (response.ok) {
+      const { status, data } = await sendOTP(email);
+      if (status >= 200 && status < 300) {
         setStep(2);
         toast.success("OTP sent successfully");
       } else {
-        toast.error(data.message, { autoClose: 2000 });
+        toast.error(data?.message || "OTP send failed", { autoClose: 2000 });
       }
     } catch (error) {
       console.error("Error sending OTP:", error);
-      toast.error("Failed to send OTP", { autoClose: 2000 });
+      const msg = error?.response?.data?.message || "OTP send failed";
+      toast.error(msg, { autoClose: 2000 });
     }
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `https://itp-movie-backend.vercel.app/user/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, otp }),
-          credentials: "include",
-        }
-      );
-      const data = await response.json();
-      if (response.ok) {
+      const { status, data } = await loginWithOtp(email, otp);
+      if (status >= 200 && status < 300) {
         toast.success("Login successful", { autoClose: 2000 });
         window.location.href = "/";
       } else {
-        toast.error(data.message, { autoClose: 2000 });
+        toast.error(data?.message || "Login failed", { autoClose: 2000 });
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
-      toast.error("Failed to verify OTP", { autoClose: 2000 });
+      const msg = error?.response?.data?.message || "Login failed";
+      toast.error(msg, { autoClose: 2000 });
     }
   };
 

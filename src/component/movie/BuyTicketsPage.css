@@ -1,42 +1,47 @@
+/* Header area */
 .buytickets .head {
     top: 10%;
-    background-color: rgb(1, 17, 70);
-    padding: 60px;
+    background: linear-gradient(180deg, rgba(20,20,20,0.9) 0%, rgba(20,20,20,0.7) 100%);
+    padding: 80px 40px 24px 40px;
 }
 
 .buytickets {
-    background-color: rgb(228, 228, 228);
-    min-height: 150vh;
+    background-color: #141414;
+    color: #e5e5e5;
+    min-height: 100vh;
     width: 100%;
 }
 
 .buytickets .s1 {
-    background-color: rgb(255, 250, 250);
+    background-color: transparent;
 }
 
 .buytickets .head h1 {
-    color: white;
-    font-size: 35px;
-    font-weight: 600;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 800;
+    margin: 0;
 }
 
 .buytickets .head h3 {
-    color: gray;
+    color: #cfcfcf;
     font-size: 13px;
     font-weight: 600;
-    border: 1px solid gray;
-    padding: 5px 20px;
-    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 999px;
     width: fit-content;
+    background: rgba(255,255,255,0.06);
 }
 
 .buytickets .screens {
     width: 90%;
-    margin: 20px auto;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    background-color: white;
+    margin: 20px auto 40px auto;
+    background: #0f0f0f;
+    border: 1px solid rgba(255,255,255,0.08);
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
 }
 
 .buytickets .screens .screen {
@@ -44,50 +49,47 @@
     justify-content: space-between;
     align-items: center;
     margin: 10px 0px;
-    padding: 10px;
+    padding: 12px 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.25s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .buytickets .screens .screen:last-child {
     border-bottom: none;
 }
 
-.buytickets .screens .screen h2 {
-    font-size: 20px;
-    font-weight: 600;
-}
+.buytickets .screens .screen h2 { font-size: 18px; font-weight: 700; color: #fff; margin: 0; }
 
-.buytickets .screens .screen h3 {
-    font-size: 15px;
-    font-weight: 600;
-}
+.buytickets .screens .screen h3 { font-size: 13px; font-weight: 600; color: #cfcfcf; margin: 4px 0 0 0; }
 
 .buytickets .time {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 30px;
+    margin-top: 24px;
     margin-left: 20px;
 }
 
 .buytickets .time .time-boxes {
     display: flex;
-    justify-content: center;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    flex-wrap: wrap; /* Allow boxes to wrap to the next line */
+    justify-content: flex-start;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .buytickets .time .time-box {
-    padding: 10px 20px;
-    border: 1px solid gray;
-    border-radius: 25px;
+    padding: 10px 16px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 0 5px;
-    min-width: 100px; /* Set a minimum width for better spacing */
+    transition: all 0.2s ease;
+    min-width: 92px;
+    color: #e5e5e5;
+    background: rgba(255,255,255,0.04);
+    text-align: center;
 }
 
 .buytickets .time .time-box.disabled {
@@ -95,52 +97,49 @@
 }
 
 .buytickets .time .time-box.disabled:hover {
-    color: #313131;
-    background-color: rgb(230, 230, 230);
+    color: #999;
+    background-color: rgba(255,255,255,0.06);
 }
 
 .buytickets .time .time-box:hover {
-    background-color: #001133;
-    color: aliceblue;
+    background-color: #e50914;
+    color: #fff;
+    border-color: #e50914;
+}
+
+/* Active selected time */
+.buytickets .time .time-box.active {
+    background-color: #e50914;
+    color: #fff;
+    border-color: #e50914;
+}
+
+/* Horizontal date picker area (wrapper tweaks) */
+.buytickets .s1 > .react-horizontal-datepicker,
+.buytickets .s1 > .DatePicker,
+.buytickets .s1 .datepicker {
+    background: transparent !important;
+}
+
+.buytickets .s1 {
+    padding: 0 20px;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .buytickets .head {
-        padding: 80px;
-        padding-bottom: 10px;
-    }
+    .buytickets .head { padding: 90px 16px 14px 16px; }
 
-    .buytickets .head h1 {
-        font-size: 20px;
-    }
+    .buytickets .head h1 { font-size: 22px; }
 
-    .buytickets .head h3 {
-        font-size: 12px;
-    }
+    .buytickets .head h3 { font-size: 12px; }
 
-    .buytickets .screens {
-        padding: 15px;
-    }
+    .buytickets .screens { padding: 16px; width: calc(100% - 24px); margin-left: 12px; margin-right: 12px; }
 
-    .buytickets .screens .screen h2 {
-        font-size: 18px;
-    }
+    .buytickets .screens .screen h2 { font-size: 16px; }
 
-    .buytickets .screens .screen h3 {
-        font-size: 13px;
-    }
+    .buytickets .screens .screen h3 { font-size: 12px; }
 
-    .buytickets .time {
-        margin-top: 10px;
-        margin-left: 15px;
-        margin-bottom: 10px;
-    }
+    .buytickets .time { margin-top: 10px; margin-left: 12px; margin-bottom: 10px; }
 
-    .buytickets .time .time-box {
-        padding: 9px 20px;
-        margin: 0 4px;
-        min-width: 80px;
-        margin-bottom: 10px;
-    }
+    .buytickets .time .time-box { padding: 9px 16px; min-width: 78px; margin-bottom: 10px; }
 }
